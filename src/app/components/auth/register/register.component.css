@@ -1,0 +1,85 @@
+/* Estilos generales */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+.formulario-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Reemplaza 'ruta/de/la/imagen.jpg' con la ruta de tu imagen de fondo */
+    /* Ajusta el tamaño de la imagen para cubrir todo el contenedor */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+.datos {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+label {
+    flex: 1;
+    margin-bottom: 5px;
+    color: #000000;
+}
+
+
+/* Estilos que sirven para los campos o label del formulario */
+
+input[type="text"],
+input[type="number"],
+select,
+input[type="email"],
+input[type="tel"] {
+    flex: 2;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #000000;
+}
+
+
+/* Boton de enviar */
+
+button[type="submit"] {
+    background-color: #1a01ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background-color: #000000;
+}
+
+
+/* Estilos responsivos */
+
+@media (max-width: 768px) {
+    .formulario-container {
+        max-width: 90%;
+    }
+    /* Ajustar tamaño de fuente en pantallas pequeñas si es necesario */
+    h1 {
+        font-size: 24px;
+    }
+}

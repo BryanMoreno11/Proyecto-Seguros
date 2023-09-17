@@ -1,0 +1,37 @@
+<!-- app/src/app/tu-componente/formulario-registro/formulario-registro.component.html -->
+
+<div class="form-container">
+    <form>
+        <div class="form-group">
+            <label for="marca">Marca:</label>
+            <select id="marca" name="marca_auto" [(ngModel)]="marca_auto" (change)="getModelos()" class="form-control" (change)="calcularCotizacion()">
+           <option [value]="" name="" ></option>
+          <option *ngFor="let marca of marcas" >{{marca}}</option>
+          <!-- Agrega más opciones según sea necesario -->
+        </select>
+        </div>
+        <div class="form-group">
+            <label for="modelo">Modelo:</label>
+            <select id="modelo" name="modelo" class="form-control" [(ngModel)]="automovil.id_modelo" (change)="calcularCotizacion()">
+                <option name="" ></option>
+          <option [value]="modelo.id_modelo" *ngFor="let modelo of modelos_filtro">{{modelo.nombre}} </option>
+        </select>
+        </div>
+        <div class="form-group">
+            <label for="anio">Año:</label>
+            <select id="anio" name="anio" class="form-control" [(ngModel)]="automovil.id_anio" (change)="calcularCotizacion()">
+            <option name="" ></option>
+          <option *ngFor="let anio of anios" [value]="anio.id_anio">{{anio.nombre}}</option>
+        </select>
+        </div>
+        <div class="form-group">
+            <label for="valorMercado">Valor Mercado:</label>
+            <input type="text" id="valorMercado" name="valorMercado" [(ngModel)]="automovil.valor_mercado" class="form-control" placeholder="Ingrese el valor de mercado" (input)="calcularCotizacion()">
+        </div>
+        <div class="form-group">
+            <label for="valorCotizacion">Valor Cotización:</label>
+            <p *ngIf="automovil.valor_cotizacion>0">{{automovil.valor_cotizacion}}</p>
+        </div>
+        <button type="submit" class="btn-submit" (click)="edit ? modificarAutomovil(): insertarAutomovil()">Registrar</button>
+    </form>
+</div>

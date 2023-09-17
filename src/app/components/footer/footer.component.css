@@ -1,0 +1,80 @@
+/* Estilos generales para el footer */
+
+footer {
+    background-color: #000000;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* Alineamos los elementos en la parte superior */
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex-basis: 30%;
+}
+
+.footer-section h3 {
+    font-size: 1.5rem;
+    color: #ecebeb;
+}
+
+.redes-sociales {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.redes-sociales img {
+    width: 30px;
+    height: 30px;
+}
+
+.footer-section p {
+    font-size: 1rem;
+    color: #b9b9b9;
+    margin: 5px 0;
+    /* Añadimos un pequeño margen entre los párrafos */
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: #b9b9b9;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    color: #b9b9b9;
+}
+
+
+/* Estilos responsive */
+
+@media screen and (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+    .footer-section {
+        flex-basis: 100%;
+        text-align: center;
+    }
+    .footer-section:nth-child(3) {
+        margin-top: 20px;
+    }
+    .footer-section h3 {
+        font-size: 1.3rem;
+    }
+}

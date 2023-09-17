@@ -1,0 +1,172 @@
+.hero {
+    position: relative;
+    height: 65vh;
+}
+
+.portada-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.degradado {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-frase {
+    position: absolute;
+    z-index: 10000;
+    top: 0;
+    left: 25px;
+    bottom: 0;
+    font-size: 2vw;
+    color: #D9D9D9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+}
+
+.hero-frase h1 {
+    padding: 0;
+    margin: 0;
+}
+
+.hero-frase p {
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    font-size: 1.5vw;
+}
+
+.nuestra-vision h2 {
+    text-align: center;
+    font-size: 3rem;
+    color: var(--color_secundario);
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: -5px;
+    /* Reducimos aún más los márgenes negativos para juntar las cards */
+}
+
+.card {
+    flex-basis: calc(15% - 25px);
+    /* Hace que las tarjetas tengan un tamaño más pequeño y se muestren en la misma línea */
+    margin: 50px;
+    /* Ajustamos el espacio entre las tarjetas */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centra las imágenes horizontalmente */
+}
+
+.card img {
+    flex: 1;
+    max-width: 100px;
+    /* Ajusta el tamaño máximo de la imagen */
+    max-height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card p {
+    font-size: 16px;
+    margin: 10px 0;
+    /* Añade espacio en la parte superior e inferior */
+    padding: 0;
+}
+
+
+/* Secciones */
+
+.seccion {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.seccion-1 {
+    background-color: #D9D9D9;
+}
+
+.seccion img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info {
+    width: 80%;
+    height: 100%;
+    place-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.info h3 {
+    font-size: 1.7em;
+    text-align: center;
+    margin: 0;
+}
+
+.info p {
+    text-align: justify;
+    margin: 0;
+    font-size: 1em;
+}
+
+@media only screen and (max-width: 702px) {
+    .hero-frase {
+        font-size: 5.5vw !important;
+    }
+    /* cards */
+    .nuestra-vision h2 {
+        font-size: 1.5rem !important;
+    }
+    .info {
+        font-size: 10px !important;
+    }
+    .seccion {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: 1fr 1fr;
+    }
+    .seccion-2 {
+        display: flex;
+        gap: 20px;
+        flex-direction: column-reverse;
+    }
+}
+
+@media (max-width: 768px) {
+    .cards {
+        flex: 0 0 100%;
+    }
+    .card {
+        max-width: 100%;
+    }
+    /* Eliminar salto de línea en pantallas pequeñas */
+    .break {
+        display: none;
+    }
+}

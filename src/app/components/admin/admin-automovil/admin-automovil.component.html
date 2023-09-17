@@ -1,0 +1,28 @@
+<div class="table-container">
+    <button class="btn-insert" routerLink="/admin-add-automovil">Insertar</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Año</th>
+                <th>Valor Mercado</th>
+                <th>Valor Cotización</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let automovil of automoviles;">
+                <td>{{automovil.marca}}</td>
+                <td>{{automovil.modelo}}</td>
+                <td>{{automovil.anio}}</td>
+                <td>{{automovil.valor_mercado}}</td>
+                <td>{{automovil.valor_cotizacion}}</td>
+                <td>
+                    <button class="btn-edit" [routerLink]="['/admin-edit-automovil',automovil.id_vehiculo]">Editar</button>
+                    <button class="btn-delete" (click)="eliminarAutomovil(automovil.id_vehiculo)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

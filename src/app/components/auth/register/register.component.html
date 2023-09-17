@@ -1,0 +1,73 @@
+<div class="formulario-container">
+    <h1>Registro de Datos Personales</h1>
+    <form (ngSubmit)="submitForm()">
+        <div class="datos">
+            <label for="nombres">Nombres:</label>
+            <input type="text" id="nombres" name="nombres" [(ngModel)]="formData.nombres" required>
+        </div>
+
+        <div class="datos">
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" name="apellidos" [(ngModel)]="formData.apellidos" required>
+        </div>
+
+        <div class="datos">
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad" name="edad" [(ngModel)]="formData.edad" min="18" max="99" required>
+        </div>
+
+        <div class="datos">
+            <label for="genero">Género:</label>
+            <select id="genero" name="genero" [(ngModel)]="formData.genero" required>
+          <option value="">Selecciona una opción</option>
+          <option value="masculino">Masculino</option>
+          <option value="femenino">Femenino</option>
+          <option value="otro">Otro</option>
+        </select>
+        </div>
+
+        <div class="datos">
+            <label for="estado-civil">Estado Civil:</label>
+            <select id="estado-civil" name="estado-civil" [(ngModel)]="formData.estadoCivil" required>
+          <option value="">Selecciona una opción</option>
+          <option value="soltero">Soltero</option>
+          <option value="casado">Casado</option>
+          <option value="viudo">Viudo</option>
+          <option value="divorciado">Divorciado</option>
+        </select>
+        </div>
+
+        <div class="datos">
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" name="correo" [(ngModel)]="formData.correo" required>
+        </div>
+
+        <div class="datos">
+            <label for="numero-celular">Número de Celular:</label>
+            <input type="tel" id="numero-celular" name="numero-celular" [(ngModel)]="formData.numeroCelular" required>
+        </div>
+
+        <div class="datos">
+            <label for="provincia">Provincia:</label>
+            <select id="provincia" name="provincia" [(ngModel)]="formData.provincia" (change)="onProvinciaChange()" required>
+          <option value="">Selecciona una provincia</option>
+          <option value="provincia1">Azuay</option>
+          <option value="provincia2">El Oro</option>
+         
+        </select>
+        </div>
+
+        <div class="datos">
+            <label for="ciudad">Ciudad:</label>
+            <select id="ciudad" name="ciudad" [(ngModel)]="formData.ciudad" required>
+          <option value="">Selecciona una ciudad</option>
+          <option *ngFor="let ciudad of ciudades" [value]="ciudad">{{ ciudad }}</option>
+        </select>
+        </div>
+
+        <div class="datos">
+            <button type="submit">Enviar datos</button>
+        </div>
+    </form>
+</div>
+<app-footer></app-footer>

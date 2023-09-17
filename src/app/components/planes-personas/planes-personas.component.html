@@ -1,0 +1,37 @@
+<div class="container">
+    <h1>Empresas Aseguradoras</h1>
+    <p>En FacilitaSeguros nos preocupamos por tu bienestar y el de tus seres queridos. Ofrecemos una variedad de planes de seguros de vida para proteger lo que más te importa. Explora las opciones que tenemos disponibles:</p>
+    <div class="video-container">
+        <video width="100%" controls>
+        <source src="../../../assets/adaptacion.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento de video.
+      </video>
+    </div>
+    <div class="container">
+        <h1>Planes de Seguro de Vida</h1>
+        <p>Explora los planes de seguro de vida disponibles:</p>
+
+        <div class="empresas">
+            <ng-container *ngFor="let aseguradora of aseguradorasConPlanes">
+                <div class="empresa-card">
+                    <img [src]="aseguradora.aseguradora_imagen" alt="Imagen de la aseguradora">
+                    <h2>{{ aseguradora.aseguradora_nombre }}</h2>
+                    <div class="planes">
+                        <div class="plan-card" *ngFor="let plan of aseguradora.planes; let i = index">
+                            <h3>{{ plan.plan_vida_nombre }}</h3>
+                            <p>{{ plan.plan_vida_descripcion }}</p>
+                            <p class="precio">{{ plan.precio | currency }}</p>
+                            <a routerLink="/register">Solicitar</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </ng-container>
+        </div>
+
+
+    </div>
+</div>
+<app-footer></app-footer>

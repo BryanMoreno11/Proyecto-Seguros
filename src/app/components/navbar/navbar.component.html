@@ -1,0 +1,35 @@
+<nav class="navbar">
+    <div class="logo">
+        <img class="logo-image" src="../../../assets/logo-seguro.png" alt="">
+        <a class="logo-name" aria-current="page" [routerLink]="['personas']" routerLinkActive="active">
+            <h1>FacilitaSeguros</h1>
+        </a>
+
+
+    </div>
+    <ul class="group-list">
+        <li class="list-item">
+            <a [routerLink]="['personas']" routerLinkActive="active">
+          Personas
+        </a>
+        </li>
+        <li class="list-item">
+            <a [routerLink]="['automoviles']" routerLinkActive="active">
+          Automoviles
+        </a>
+        </li>
+        <li class="list-item">
+            <a [routerLink]="['quienes-somos']" routerLinkActive="active">
+          Quienes somos
+        </a>
+        </li>
+        <li class="list-item">
+            <a class="servicios">Planes</a>
+            <ul class="submenu">
+                <li><a [routerLink]="['planes-personas']" routerLinkActive="active">Personas</a></li>
+                <li><a [routerLink]="['planes-automoviles']" routerLinkActive="active">Automoviles</a></li>
+            </ul>
+        </li>
+        <button [routerLink]="['register']" routerLinkActive="active" id="btn-ingresar">Registrar Datos</button>
+    </ul>
+</nav>

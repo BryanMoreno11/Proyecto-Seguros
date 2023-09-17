@@ -1,0 +1,128 @@
+
+form {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+form label {
+    margin-bottom: 10px;
+}
+
+form button {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+section {
+    padding: 10px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    ;
+}
+
+
+/* Estilos generales del recuadro */
+
+.recuadro {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 90%;
+}
+
+
+/* Estilos del logo */
+
+.logo {
+    flex: 0 0 100px;
+    /* Ancho fijo del logo */
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* Estilos de la información de la empresa */
+
+.info {
+    flex: 1;
+    /* Que ocupe todo el espacio disponible */
+    margin: 0 20px;
+    /* Espacio entre el logo y la información */
+}
+
+.info h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+
+/* Estilos del texto adicional y botón */
+
+.acciones {
+    flex: 0 0 50px;
+    /* Ancho fijo del texto adicional y botón */
+    text-align: center;
+}
+
+.acciones p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.acciones button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* Media Queries para hacerlo responsive */
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.grid .contenedor {
+    padding-top: 15px;
+    gap: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-bottom: 15px;
+}
+
+@media (max-width: 1196px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 745px) {
+    .recuadro {
+        flex-direction: column;
+    }
+    .info {
+        margin: 20px 0;
+    }
+    .logo img {
+        width: 200px;
+        height: auto;
+    }
+}

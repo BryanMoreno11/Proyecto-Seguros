@@ -1,0 +1,59 @@
+<div class="grid-container">
+    <div class="grid">
+        <form>
+            <section>
+                <label for="marca">Seleccione una marca</label>
+                <select name="marca" id="marca" [(ngModel)]="automovil.marca" (change)="getModelosMarca()">
+                    <option value=""></option>
+                        
+                    <option *ngFor="let marca of marcas">
+                           {{marca}}
+                        </option>
+                    </select>
+            </section>
+
+            <section>
+                <label for="modelo">Seleccione un modelo</label>
+                <select name="modelo" id="modelo" name="modelo" [(ngModel)]="automovil.modelo" (change)="getAnios()">
+                    <option value=""></option>
+                    <option *ngFor="let modelo of modelos"  >
+                        {{modelo}}
+                    </option>
+                    </select>
+            </section>
+
+            <section>
+                <label for="anio">Seleccione el año</label>
+                <select name="anio" id="anio" [(ngModel)]="automovil.anio">
+                    <option value="">
+
+                    </option>
+                    
+                        <option *ngFor="let anio of anios">
+                            {{anio}}
+
+                        </option>
+                    </select>
+            </section>
+            <button (click)="getSeguros()"> Ver seguros  </button>
+        </form>
+
+
+        <div class="contenedor">
+            <div class="recuadro" *ngFor="let seguro of segurosFiltro">
+                <div class="logo">
+                    <img [src]="seguro.imagen" alt="Logo de la empresa">
+                </div>
+                <div class="info">
+                    <h2>{{seguro.aseguradora}}</h2>
+                    <p>{{seguro.descripcion}}</p>
+                </div>
+                <div class="acciones">
+                    <p>Precio: {{seguro.precio}}</p>
+                    <button routerLinkActive="active" routerLink="/planes-personas">Cotizar </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
