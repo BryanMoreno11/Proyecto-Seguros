@@ -8,7 +8,7 @@ export class PlanVidaService {
 
   constructor(private http: HttpClient) { }
 
-  API_URL= 'https://backend-tutorial-rxz2.onrender.com/api/';
+  API_URL= 'http://localhost:3000/api/';
 
   getPlanesVida(){
     return this.http.get(`${this.API_URL}planvida`);

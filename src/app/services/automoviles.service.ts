@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AutomovilesService {
   
-  API_URL= 'https://backend-tutorial-rxz2.onrender.com/api/';
+  API_URL= 'http://localhost:3000/api/';
 
 
   constructor(private http: HttpClient) {}
