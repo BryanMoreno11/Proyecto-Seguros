@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------------------------Documentación--------------------------------------------------------------------------------------------------------------
-usuario del admin: fzambrano2@utmachala.edu.ec
+usuario del admin: fzambrano2@utmachala.edu.ec bmoreno3@utmachala.edu.ec
 contraseña del admin: admin123
 # Comandos
 Debes hacer un "cd server"
