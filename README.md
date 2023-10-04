@@ -1,6 +1,7 @@
 ---------------------------------------------------------------------------------------------Documentación--------------------------------------------------------------------------------------------------------------
 usuario del admin: fzambrano2@utmachala.edu.ec bmoreno3@utmachala.edu.ec
 contraseña del admin: admin123
+Para que el proyecto funcione debes ejecutar el comando "npm install" Ese comando lo que hace es instalar las dependencias del proyecto
 # Comandos
 Debes hacer un "cd server"
 *comando "npm run build", este comando lo que hace es compilar código TS a JS cada vez que se realicé un cambio en un archivo TS.
