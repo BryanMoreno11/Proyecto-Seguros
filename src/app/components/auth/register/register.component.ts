@@ -250,10 +250,10 @@ export class RegisterComponent implements OnInit {
           icon: 'success',
           confirmButtonText: 'OK'
         })
-        this.httpclien.post('https://backend-tutorial-rxz2.onrender.com/api/envio',params).subscribe(resp=>{
+        this.httpclien.post('http://localhost:3000/api/envio',params).subscribe(resp=>{
         console.log(resp);
        });
-       this.httpclien.post('https://backend-tutorial-rxz2.onrender.com/api/envio/envioaseguradora/',params).subscribe(resp=>{
+       this.httpclien.post('http://localhost:3000/api/envio/envioaseguradora',params).subscribe(resp=>{
         console.log(resp);
        }) 
   })
@@ -296,10 +296,10 @@ export class RegisterComponent implements OnInit {
           icon: 'success',
           confirmButtonText: 'OK'
         })
-        this.httpclien.post('https://backend-tutorial-rxz2.onrender.com/api/envio/vida/',params).subscribe(resp=>{
+        this.httpclien.post('http://localhost:3000/api/envio/vida',params).subscribe(resp=>{
         console.log(resp);
        });
-       this.httpclien.post('https://backend-tutorial-rxz2.onrender.com/api/envio/envioaseguradoravida/',params).subscribe(resp=>{
+       this.httpclien.post('http://localhost:3000/api/envio/envioaseguradoravida',params).subscribe(resp=>{
         console.log(resp);
        }) 
         console.log(this.client_seguro);
