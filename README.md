@@ -1,3 +1,12 @@
+---------------------------------------------------------------------------------------------Documentación--------------------------------------------------------------------------------------------------------------
+usuario del admin: fzambrano2@utmachala.edu.ec
+contraseña del admin: admin123
+# Comandos
+Debes hacer un "cd server"
+*comando "npm run build", este comando lo que hace es compilar código TS a JS cada vez que se realicé un cambio en un archivo TS.
+*comando "npm run dev", este comando lo que hace es ejecutar el servidor en localhost.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # ProyectoSeguros
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
