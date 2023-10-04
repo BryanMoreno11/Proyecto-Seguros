@@ -1,6 +1,27 @@
+<h1 class="heading">Tabla de automoviles</h1>
+
+<div class="search-container">
+    <input [(ngModel)]="searchText" type="text" placeholder="Buscar..." (ngModelChange)="onSearchTextChange($event)">
+</div>
+<div class="select-container">
+    <select id="carMarca" [(ngModel)]="seleccion.marca" (change)="obtenerAnios()" (change)="setSearch()">
+        <option value="" >Seleccione una Marca</option>
+            <option *ngFor="let marca of marcas" >{{marca}}</option>
+        </select>
+
+    <select id="anio" [(ngModel)]="seleccion.anio" (change)="setSearch()">
+            <option value="">Seleccione un Año</option>
+            <option *ngFor="let anio of anios">{{anio}}</option>
+          </select>
+</div>
+
 <div class="table-container">
-    <button class="btn-insert" routerLink="/admin-add-automovil">Insertar</button>
-    <table>
+
+    <a class="btn-insert" routerLink="/admin/admin-add-automovil">
+        <img src="assets/boton-agregar (1).png" alt="Insertar">
+    </a>
+    <br>
+    <table class="table">
         <thead>
             <tr>
                 <th>Marca</th>
@@ -12,15 +33,22 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let automovil of automoviles;">
+            <tr *ngFor="let automovil of automoviles | automovil:searchText">
                 <td>{{automovil.marca}}</td>
                 <td>{{automovil.modelo}}</td>
                 <td>{{automovil.anio}}</td>
                 <td>{{automovil.valor_mercado}}</td>
                 <td>{{automovil.valor_cotizacion}}</td>
                 <td>
-                    <button class="btn-edit" [routerLink]="['/admin-edit-automovil',automovil.id_vehiculo]">Editar</button>
-                    <button class="btn-delete" (click)="eliminarAutomovil(automovil.id_vehiculo)">Eliminar</button>
+                    <!-- Para la edición -->
+                    <a class="img-link" [routerLink]="['/admin/admin-edit-automovil',automovil.id_vehiculo]">
+                        <img src="assets/lapiz.png" alt="Editar">
+                    </a>
+
+                    <!-- Para la eliminación -->
+                    <a class="img-link" (click)="eliminarAutomovil(automovil.id_vehiculo)">
+                        <img src="assets/borrar (2).png" alt="Eliminar">
+                    </a>
                 </td>
             </tr>
         </tbody>

@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+/* Estilos base para el texto y los elementos comunes */
+
+body {
+    font-family: 'Playfair Display', serif;
+    color: black;
+}
+
+
+/* Estilos para el contenedor de la tabla */
+
+.table-container {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    padding: 0 5%;
+    /* Ajusta el espaciado lateral para pantallas más pequeñas */
+    margin: 40px auto 0;
+}
+
+
+/* Estilos para el encabezado */
+
+.heading {
+    font-size: 30px;
+    /* Reducido el tamaño del encabezado para pantallas más pequeñas */
+    text-align: center;
+    color: black;
+    margin-bottom: 20px;
+    /* Reducido el margen inferior para pantallas más pequeñas */
+}
+
+
+/* Estilos para la tabla */
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead {
+    background-color: #0056b3;
+}
+
+.table thead tr th {
+    font-size: 18px;
+    /* Reducido el tamaño de la fuente de las cabeceras */
+    font-weight: 600;
+    letter-spacing: 0.35px;
+    color: white;
+    padding: 10px;
+    /* Reducido el espaciado en las cabeceras */
+    text-align: center;
+}
+
+.table tbody tr td {
+    font-size: 18px;
+    /* Reducido el tamaño de la fuente del cuerpo de la tabla */
+    letter-spacing: 0.35px;
+    font-weight: normal;
+    padding: 8px;
+    text-align: center;
+}
+
+
+/* Estilos para las imágenes */
+
+.img-link {
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    /* Reducido el margen derecho para pantallas más pequeñas */
+    cursor: pointer;
+}
+
+
+/* Estilos para el botón "Insertar" */
+
+.btn-insert {
+    font-size: 18px;
+    /* Reducido el tamaño del botón para pantallas más pequeñas */
+    color: #007bff;
+    font-family: 'Playfair Display', serif;
+    display: inline-block;
+    margin-top: 10px;
+    /* Espaciado superior para el botón */
+}
+
+
+/* Estilos para pasar el mouse por encima */
+
+.btn-insert:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+
+/* Estilos alternos para filas */
+
+.table tbody tr:nth-child(even) td {
+    background-color: #c5e2f9;
+    color: #0056b3;
+}
+
+.table tbody tr:nth-child(odd) td {
+    background-color: white;
+    color: #0056b3;
+}
+
+
+/* Estilos de bordes */
+
+.table tbody tr td,
+.table thead tr th {
+    border: 1px solid #dee2e685;
+}
+
+
+/* Estilos adicionales para la tabla */
+
+.table {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+
+/* Media Query para pantallas más pequeñas */
+
+@media screen and (max-width: 768px) {
+    /* Ajusta los estilos para pantallas más pequeñas aquí */
+    .table-container {
+        padding: 0 3%;
+        /* Ajusta aún más el espaciado lateral para pantallas más pequeñas */
+    }
+    .heading {
+        font-size: 24px;
+        /* Reducido el tamaño del encabezado para pantallas más pequeñas */
+        margin-bottom: 10px;
+        /* Reducido aún más el margen inferior para pantallas más pequeñas */
+    }
+    .table thead tr th {
+        font-size: 16px;
+        /* Reducido el tamaño de la fuente de las cabeceras para pantallas más pequeñas */
+        padding: 8px;
+        /* Reducido el espaciado en las cabeceras para pantallas más pequeñas */
+    }
+    .table tbody tr td {
+        font-size: 16px;
+        /* Reducido el tamaño de la fuente del cuerpo de la tabla para pantallas más pequeñas */
+        padding: 6px;
+        /* Reducido el espaciado en el cuerpo de la tabla para pantallas más pequeñas */
+    }
+    .img-link {
+        margin-bottom: 6px;
+        /* Reducido el espaciado inferior para pantallas más pequeñas */
+        margin-right: 6px;
+        /* Reducido el margen derecho para pantallas más pequeñas */
+    }
+}

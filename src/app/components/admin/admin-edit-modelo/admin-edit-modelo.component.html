@@ -1,0 +1,32 @@
+<!-- app/src/app/tu-componente/formulario-registro/formulario-registro.component.html -->
+
+<div class="form-container">
+    <form (ngSubmit)="edit ? modificarModelo(forma): insertarModelo(forma)" #forma="ngForm">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" #nombre="ngModel" [class.is-invalid]="nombre.invalid && nombre.touched" [(ngModel)]="modelo.nombre" class="form-control" placeholder="Ingrese el nombre" required>
+            <small *ngIf="nombre.invalid && nombre.touched" style="color: red;"> Ingrese el nombre del modelo</small>
+        </div>
+        <div class="form-group">
+            <label for="nombre">Marca:</label>
+            <input type="text" id="marca" name="marca" #marca="ngModel" [class.is-invalid]="marca.invalid && marca.touched" [(ngModel)]="modelo.marca" class="form-control" placeholder="Ingrese la marca" required>
+            <small *ngIf="marca.invalid && marca.touched" style="color: red;"> Ingrese el nombre de la marca</small>
+        </div>
+
+        <div class="form-group">
+            <label for="modelo">Factor Riesgo:</label>
+            <select id="modelo" name="factor_riesgo" [(ngModel)]="modelo.factor_riesgo" class="form-control" required>
+      <option [value]="" name="" ></option>
+      <option [value] = "0.25">0.25</option>
+      <option [value] = "0.50">0.50</option>
+      <option [value] = "0.75">0.75</option>
+      <option [value] = "1.00">1.00</option>
+      <option [value] = "1.25">1.25</option>
+      <option [value] = "1.50">1.50</option>
+      <option [value] = "1.75">1.75</option>
+      <option [value] = "2.00">2.00</option>
+             </select>
+        </div>
+        <button type="submit" class="btn-submit">Registrar</button>
+    </form>
+</div>

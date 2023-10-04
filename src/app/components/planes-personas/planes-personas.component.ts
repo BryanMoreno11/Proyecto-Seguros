@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SeguroVidaService, Seguro_Vida } from 'src/app/services/seguro-vida.service';
+import { ClienteVidaService } from '../../services/cliente-vida.service';
 
 @Component({
   selector: 'app-planes-personas',
@@ -10,7 +11,7 @@ export class PlanesPersonasComponent implements OnInit {
   segurosVida: Seguro_Vida[] = [];
   aseguradorasConPlanes: any[] = []; // Esta variable contendrá las aseguradoras con sus planes
 
-  constructor(private seguroVidaService: SeguroVidaService) {}
+  constructor(private seguroVidaService: SeguroVidaService, private cliente_vida_service: ClienteVidaService) {}
 
   ngOnInit(): void {
     this.seguroVidaService.getSeguros().subscribe((res) => {
@@ -21,23 +22,27 @@ export class PlanesPersonasComponent implements OnInit {
 
   // Función para agrupar los planes por aseguradora
   agruparPlanesPorAseguradora() {
-    // Creamos un mapa para agrupar los planes por aseguradora
-    const aseguradorasMap = new Map<string, any>();
+     // Creamos un mapa para agrupar los planes por aseguradora
+     const aseguradorasMap = new Map<string, any>();
 
-    // Iteramos a través de los seguros de vida y los agrupamos por aseguradora
-    this.segurosVida.forEach((seguro) => {
-      if (!aseguradorasMap.has(seguro.aseguradora_nombre)) {
-        aseguradorasMap.set(seguro.aseguradora_nombre, {
-          aseguradora_nombre: seguro.aseguradora_nombre,
-          aseguradora_imagen: seguro.aseguradora_imagen,
-          planes: []
-        });
-      }
-      aseguradorasMap.get(seguro.aseguradora_nombre).planes.push(seguro);
-    });
+     // Iteramos a través de los seguros de vida y los agrupamos por aseguradora
+     this.segurosVida.forEach((seguro) => {
+       if (!aseguradorasMap.has(seguro.aseguradora_nombre)) {
+         aseguradorasMap.set(seguro.aseguradora_nombre, {
+           aseguradora_nombre: seguro.aseguradora_nombre,
+           aseguradora_imagen: seguro.aseguradora_imagen,
+           planes: []
+         });
+       }
+       aseguradorasMap.get(seguro.aseguradora_nombre).planes.push(seguro);
+     });
+ 
+     // Convertimos el mapa en un arreglo
+     this.aseguradorasConPlanes = Array.from(aseguradorasMap.values());
+  }
 
-    // Convertimos el mapa en un arreglo
-    this.aseguradorasConPlanes = Array.from(aseguradorasMap.values());
+  setEstado(){
+  this.cliente_vida_service.estado=true;
   }
 }
 

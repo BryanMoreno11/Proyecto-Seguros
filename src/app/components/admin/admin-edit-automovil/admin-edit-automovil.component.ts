@@ -1,9 +1,9 @@
 import { Component,OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { AnioService } from 'src/app/services/anio.service';
 import { AutomovilesService, Automovil } from 'src/app/services/automoviles.service';
 import { ModeloService,Modelo } from 'src/app/services/modelo.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-admin-edit-automovil',
   templateUrl: './admin-edit-automovil.component.html',
@@ -33,6 +33,7 @@ export class AdminEditAutomovilComponent implements OnInit {
   }
   //OnInit
   ngOnInit():void{
+    const params= this.activatedRoute.snapshot.params;
     this.automovil_service.getAutomoviles().subscribe(res=>{this.automoviles=res;
     });
      this.modelo_service.getModelos().subscribe(res=>{this.modelos=res;
@@ -50,7 +51,7 @@ export class AdminEditAutomovilComponent implements OnInit {
      this.anio_service.getAnios().subscribe(res=>{this.anios=res;
      });
      //Modificar
-    const params= this.activatedRoute.snapshot.params;
+    
     
   }
 
@@ -101,10 +102,8 @@ export class AdminEditAutomovilComponent implements OnInit {
     resultado=this.automovil.valor_mercado*anioRiesgo*modeloRiesgo;
     this.automovil.valor_cotizacion=Math.round(resultado*100)/100;
     }
-    insertarAutomovil(){
-      console.log(this.automovil.valor_cotizacion);
-     if(this.automovil.id_modelo==0 || this.automovil.id_anio==0 || this.automovil.valor_mercado==0 || this.automovil.valor_cotizacion<=0
-      || Number.isNaN(this.automovil.valor_cotizacion) ){
+    insertarAutomovil(forma:NgForm){
+      if (forma.invalid){
         window.alert("Ingrese los datos solicitados correctamente");
      }
      else if(this.automovilRepetido()==true){
@@ -113,14 +112,13 @@ export class AdminEditAutomovilComponent implements OnInit {
      
      else{
         this.automovil_service.insertAutomovil(this.automovil).subscribe(res=>{window.alert("Vehiculo insertado exitosamente");
-      this.router.navigate(['/admin-automovil']);},
+      this.router.navigate(['/admin/admin-automovil']);},
           err=>{console.log(err)});
      }
     }
 
-    modificarAutomovil(){
-      if(this.automovil.id_modelo==0 || this.automovil.id_anio==0 || this.automovil.valor_mercado==0 || this.automovil.valor_cotizacion<=0
-        || Number.isNaN(this.automovil.valor_cotizacion)){
+    modificarAutomovil(forma:NgForm){
+      if(forma.invalid){
         window.alert("Ingrese los datos solicitados correctamente");
      }else if(this.automovilRepetido()==true){
       window.alert("Error!, ya existe el vehículo que desea agregar");
@@ -128,7 +126,7 @@ export class AdminEditAutomovilComponent implements OnInit {
      else{
       this.automovil_service.updateAutomovil(this.automovil.id_vehiculo,this.automovil).subscribe(
         res=>{window.alert("Vehiculo modificado exitosamente");
-        this.router.navigate(['/admin-automovil']);},
+        this.router.navigate(['/admin/admin-automovil']);},
         err=>{console.log(err);}
       );
      }

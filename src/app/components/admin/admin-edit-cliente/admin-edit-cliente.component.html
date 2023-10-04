@@ -1,0 +1,47 @@
+<div class="form-container">
+    <form (ngSubmit)="edit ? modificarCliente(forma): insertarCliente(forma)" #forma="ngForm">
+        <div class="form-group">
+            <label for="nombre">Cédula:</label>
+            <input type="text" id="cedula" name="cedula" #cedula="ngModel" [class.is-invalid]="cedula.invalid && cedula.touched" [(ngModel)]="cliente.cedula" class="form-control" placeholder="Ingrese una cedula" pattern="^[0-9]|10$" required minlength="10">
+            <small *ngIf="cedula.invalid && cedula.touched" style="color: red;"> Ingrese una cedula correcta</small>
+        </div>
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" #nombre="ngModel" [class.is-invalid]="nombre.invalid && nombre.touched" [(ngModel)]="cliente.nombre" class="form-control" placeholder="Ingrese el nombre del cliente" required>
+            <small *ngIf="nombre.invalid && nombre.touched" style="color: red;"> Ingrese el nombre del cliente</small>
+        </div>
+        <div class="form-group">
+            <label for="nombre">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" #apellido="ngModel" [class.is-invalid]="apellido.invalid && apellido.touched" [(ngModel)]="cliente.apellido" class="form-control" placeholder="Ingrese el apellido del cliente" required>
+            <small *ngIf="apellido.invalid && apellido.touched" style="color: red;"> Ingrese el apellido del cliente</small>
+
+        </div>
+        <div class="form-group">
+            <label for="nombre">Fecha de nacimiento:</label>
+            <input type="date" id="fecha" name="fecha" #fecha="ngModel" [class.is-invalid]="fecha.invalid && fecha.touched" [(ngModel)]="cliente.fecha_nacimiento" class="form-control" placeholder="Ingrese la fecha de nacimiento del cliente" required>
+            <small *ngIf="fecha.invalid && fecha.touched" style="color: red;"> Ingrese una fecha de nacimiento</small>
+        </div>
+        <div class="form-group">
+            <label for="nombre">Provincia:</label>
+            <input type="text" id="provincia" name="provincia" #provincia="ngModel" [class.is-invalid]="provincia.invalid && provincia.touched" [(ngModel)]="cliente.provincia" class="form-control" placeholder="Ingrese una provincia" required>
+            <small *ngIf="provincia.invalid && provincia.touched" style="color: red;"> Ingrese una provincia</small>
+        </div>
+        <div class="form-group">
+            <label for="nombre">Ciudad:</label>
+            <input type="text" id="ciudad" name="ciudad" #ciudad="ngModel" [class.is-invalid]="ciudad.invalid && ciudad.touched" [(ngModel)]="cliente.ciudad" class="form-control" placeholder="Ingrese una ciudad" required>
+            <small *ngIf="ciudad.invalid && ciudad.touched" style="color: red;"> Ingrese una ciudad</small>
+        </div>
+        <div class="form-group">
+            <label for="nombre">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono" #telefono="ngModel" [class.is-invalid]="telefono.invalid && telefono.touched" [(ngModel)]="cliente.telefono" class="form-control" placeholder="Ingrese el teléfono del cliente" required minlength="10" pattern="[0-9]{10}">
+            <small *ngIf="telefono.invalid && telefono.touched" style="color: red;"> Ingrese el teléfono del cliente</small>
+
+        </div>
+        <div class="form-group">
+            <label for="nombre">Correo:</label>
+            <input type="text" id="correo" name="correo" [(ngModel)]="cliente.correo" class="form-control" placeholder="Ingrese el correo del cliente" #correo="ngModel" [class.is-invalid]="correo.invalid && correo.touched" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+            <small *ngIf="correo.invalid && correo.touched" style="color: red;"> Ingrese el correo del cliente</small>
+        </div>
+        <button type="submit" class="btn-submit">Registrar</button>
+    </form>
+</div>

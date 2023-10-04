@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SeguroVehiculoService {
 
-  API_URL= 'http://localhost:3000/api/';
+  API_URL= 'https://backend-tutorial-rxz2.onrender.com/api/';
 
 
   constructor(private http:HttpClient) { }
@@ -29,7 +29,7 @@ export class SeguroVehiculoService {
     return this.http.post(`${this.API_URL}segurovehiculo`,seguro);
   }
   //Update
-  updateModelo(id:string, seguro:Seguro_Vehiculo){
+  updateSeguro(id:string|number, seguro:Seguro_Vehiculo){
     return this.http.put(`${this.API_URL}segurovehiculo/${id}`,seguro);
   }
   
@@ -39,6 +39,10 @@ export interface Seguro_Vehiculo{
 id_seguro_vehiculo:number;
 id_aseguradora_vehiculo:number;
 id_vehiculo:number;
-descuento:number;
+descuento:any;
 precio:number;
+}
+
+export interface Vista_Seguro_Vehiculo{
+  aseguradora:string;
 }

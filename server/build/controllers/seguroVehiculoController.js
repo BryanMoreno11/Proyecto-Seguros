@@ -35,7 +35,7 @@ class SeguroVehiculoController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const seguros = yield database_1.default.query("SELECT * FROM vista_seguro_vehiculo");
+                const seguros = yield database_1.default.query("SELECT * FROM vista_seguro_vehiculo order By id_seguro_vehiculo asc");
                 res.json(seguros);
             }
             catch (error) {

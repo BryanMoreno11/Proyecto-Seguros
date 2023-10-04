@@ -1,0 +1,60 @@
+<div class="table-container">
+    <h1 class="heading">TABLA DE CLIENTES</h1>
+    <div class="search-container">
+        <input [(ngModel)]="searchText" type="text" placeholder="Buscar..." (ngModelChange)="onSearchTextChange($event)">
+    </div>
+    <div class="select-container">
+        <select id="carMarca" [(ngModel)]="seleccion.provincia" (change)="obtenerCiudades()" (change)="setSearch()">
+            <option value="" >Seleccione una Provincia</option>
+                <option *ngFor="let provincia of provincias" >{{provincia}}</option>
+            </select>
+
+        <select id="anio" [(ngModel)]="seleccion.ciudad" (change)="setSearch()">
+                <option value="">Seleccione una Ciudad</option>
+                <option *ngFor="let ciudad of ciudades">{{ciudad}}</option>
+              </select>
+    </div>
+
+    <a class="btn-insert" routerLink="/admin/admin-add-cliente">
+        <img src="assets/boton-agregar (1).png" alt="Insertar">
+    </a>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Cédula</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Fecha de nacimiento</th>
+                <th>Provincia</th>
+                <th>Ciudad</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cliente of clientes |cliente:searchText;">
+                <td>{{cliente.cedula}}</td>
+                <td>{{cliente.nombre}}</td>
+                <td>{{cliente.apellido}}</td>
+                <td>{{cliente.fecha_nacimiento}}</td>
+                <td>{{cliente.provincia}}</td>
+                <td>{{cliente.ciudad}}</td>
+                <td>{{cliente.telefono}}</td>
+                <td>{{cliente.correo}}</td>
+                <td>
+
+                    <a class="img-link" [routerLink]="['/admin/admin-edit-cliente',cliente.id_cliente]">
+                        <img src="assets/lapiz.png" alt="Editar">
+                    </a>
+
+                    <!-- Para la eliminación -->
+                    <a class="img-link" (click)="eliminarCliente(cliente.id_cliente)">
+                        <img src="assets/borrar (2).png" alt="Eliminar">
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

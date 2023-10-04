@@ -1,0 +1,20 @@
+.two-column-layout {
+    display: flex;
+    /* Utilizamos flexbox para crear el diseño de dos columnas */
+}
+
+.left-column {
+    width: 250px;
+    /* Ancho de la columna izquierda para app-left-bar */
+    background-color: #333;
+    color: #fff;
+    /* Estilos adicionales para la columna izquierda */
+}
+
+.right-column {
+    flex: 1;
+    /* La columna derecha se expandirá para llenar el espacio restante */
+    padding: 20px;
+    /* Espaciado interno para el contenido */
+    /* Estilos adicionales para la columna derecha */
+}

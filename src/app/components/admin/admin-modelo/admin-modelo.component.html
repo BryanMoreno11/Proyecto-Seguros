@@ -1,0 +1,47 @@
+<div class="table-container">
+    <h1 class="heading">TABLA DE MODELOS</h1>
+    <div class="search-container">
+        <input [(ngModel)]="searchText" type="text" placeholder="Buscar...">
+    </div>
+    <div class="select-container">
+        <select id="carMarca" [(ngModel)]="searchText">
+            <option value="" >Seleccione una marca</option>
+                <option *ngFor="let marca of marcas" >{{marca}}</option>
+            </select>
+    </div>
+    <br>
+    <a class="btn-insert" routerLink="/admin/admin-add-modelo">
+        <img src="assets/boton-agregar (1).png" alt="Insertar">
+    </a>
+    <br>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Marca</th>
+                <th>Factor de riesgo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let modelo of modelos| modelo:searchText;">
+                <td>{{modelo.nombre}}</td>
+                <td>{{modelo.marca}}</td>
+                <td>{{modelo.factor_riesgo}}</td>
+                <td>
+                    <!-- Para la edición -->
+                    <a class="img-link" [routerLink]="['/admin/admin-edit-modelo',modelo.id_modelo]">
+                        <img src="assets/lapiz.png" alt="Editar">
+                    </a>
+
+                    <!-- Para la eliminación -->
+                    <a class="img-link" (click)="eliminarModelo(modelo.id_modelo)">
+                        <img src="assets/borrar (2).png" alt="Eliminar">
+                    </a>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

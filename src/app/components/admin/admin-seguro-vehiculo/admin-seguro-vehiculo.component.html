@@ -1,0 +1,53 @@
+<!-- admin-seguro-vehiculo.component.html -->
+<h1 class="heading">TABLA SEGURO VEHICULO</h1>
+<div class="search-container">
+    <input [(ngModel)]="searchText" type="text" placeholder="Buscar...">
+</div>
+<div class="select-container">
+    <select id="seguro" [(ngModel)]="searchText">
+        <option value="" >Seleccione una opción</option>
+            <option *ngFor="let aseguradora of aseguradoras" >{{aseguradora}}</option>
+        </select>
+</div>
+<div class="table-container">
+
+    <a class="btn-insert" routerLink="/admin/admin-edit-seguro-vehiculo">
+        <img src="assets/boton-agregar (1).png" alt="Insertar">
+    </a>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Aseguradora</th>
+                <th>Vehiculo</th>
+                <th>Precio Base</th>
+                <th>Descuento</th>
+                <th>Precio Final</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let seguro of seguros | seguroVehiculo:searchText;">
+                <td>{{ seguro.aseguradora + '' }}</td>
+                <td>{{ seguro.vehiculo + '' }}</td>
+                <td>{{ seguro.precio_base+ '' }}</td>
+
+                <td>{{ seguro.descuento+'%' }}</td>
+                <td>{{ seguro.precio_final + '' }}</td>
+                <td>
+
+
+                    <a class="img-link" [routerLink]="['/admin/admin-edit-seguro-vehiculo',seguro.id_seguro_vehiculo]">
+                        <img src="assets/lapiz.png" alt="Editar">
+                    </a>
+
+
+                    <a class="img-link" (click)="eliminarSeguro(seguro.id_seguro_vehiculo)">
+                        <img src="assets/borrar (2).png" alt="Eliminar">
+                    </a>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

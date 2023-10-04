@@ -18,10 +18,10 @@ class ClienteController {
         return __awaiter(this, void 0, void 0, function* () {
             const { cedula, nombre, apellido, fecha_nacimiento, provincia, ciudad, telefono, correo } = req.body;
             try {
-                const queryText = "INSERT INTO cliente ( cedula, nombre, apellido, fecha_nacimiento,provincia,ciudad,telefono,correo ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)";
+                const queryText = "INSERT INTO cliente ( cedula, nombre, apellido, fecha_nacimiento,provincia,ciudad,telefono,correo ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *";
                 const queryParams = [cedula, nombre, apellido, fecha_nacimiento, provincia, ciudad, telefono, correo];
                 const result = yield database_1.default.query(queryText, queryParams);
-                res.json({ text: "Cliente guardado" });
+                res.json(result);
             }
             catch (error) {
                 console.error("Error al crear cliente:", error);
@@ -33,7 +33,7 @@ class ClienteController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const cliente = yield database_1.default.query("SELECT * FROM cliente");
+                const cliente = yield database_1.default.query("SELECT * FROM cliente order by id_cliente");
                 res.json(cliente);
             }
             catch (error) {

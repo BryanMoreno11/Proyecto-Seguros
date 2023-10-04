@@ -1,0 +1,48 @@
+<h1 class="heading">TABLA PLAN DE VIDA</h1>
+<div class="search-container">
+    <input [(ngModel)]="searchText" type="text" placeholder="Buscar...">
+</div>
+<div class="select-container">
+    <select id="seguro" [(ngModel)]="searchText">
+        <option value="" >Seleccione una opción</option>
+            <option *ngFor="let aseguradora of aseguradoras" >{{aseguradora}}</option>
+        </select>
+</div>
+<div class="table-container">
+
+    <a class="btn-insert" routerLink="/admin/admin-add-plan-vida">
+        <img src="assets/boton-agregar (1).png" alt="Insertar">
+    </a>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Aseguradora</th>
+                <th>Nombre del seguro</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let planvida of planesVida | seguroVida:searchText;">
+                <td>{{planvida.aseguradora_nombre}}</td>
+                <td>{{planvida.plan_vida_nombre}}</td>
+                <td>{{planvida.plan_vida_descripcion}}</td>
+                <td>{{planvida.precio}}</td>
+                <td>
+                    <a class="img-link" [routerLink]="['/admin/admin-edit-plan-vida',planvida.id_plan_vida]">
+                        <img src="assets/lapiz.png" alt="Editar">
+                    </a>
+
+                    <!-- Para la eliminación -->
+                    <a class="img-link" (click)="eliminarPlanVida(planvida.id_plan_vida)">
+                        <img src="assets/borrar (2).png" alt="Eliminar">
+                    </a>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

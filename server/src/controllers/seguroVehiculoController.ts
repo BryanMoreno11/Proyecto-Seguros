@@ -23,7 +23,7 @@ public async create(req:Request, res:Response){
 //---Listar
 public async list(req:Request,res:Response){
     try{ 
-        const seguros=await db.query("SELECT * FROM vista_seguro_vehiculo");
+        const seguros=await db.query("SELECT * FROM vista_seguro_vehiculo order By id_seguro_vehiculo asc");
         res.json(seguros);
     
 }catch(error){

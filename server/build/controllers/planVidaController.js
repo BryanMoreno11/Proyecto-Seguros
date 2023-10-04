@@ -35,7 +35,7 @@ class PlanVidaController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const plan_vida = yield database_1.default.query("SELECT * FROM vista_plan_vida");
+                const plan_vida = yield database_1.default.query("SELECT * FROM vista_plan_vida order by id_plan_vida");
                 res.json(plan_vida);
             }
             catch (error) {

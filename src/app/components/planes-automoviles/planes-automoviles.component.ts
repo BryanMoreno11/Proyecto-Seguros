@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ModeloService, Modelo } from '../../services/modelo.service';
+import { ModeloService } from '../../services/modelo.service';
 import { AutomovilesService } from 'src/app/services/automoviles.service';
 import { SeguroVehiculoService } from '../../services/seguro-vehiculo.service';
+import { ClienteVehiculoService } from 'src/app/services/cliente-vehiculo.service';
+
+
+
+
+
 @Component({
   selector: 'app-planes-automoviles',
   templateUrl: './planes-automoviles.component.html',
@@ -24,8 +30,11 @@ export class PlanesAutomovilesComponent  implements OnInit  {
   
  //Métodos
   constructor(private modelo_service:ModeloService, private automovi_service:AutomovilesService, private seguro_service:
-    SeguroVehiculoService){
+    SeguroVehiculoService, private cliente_vehiculo_service:ClienteVehiculoService){
+
   }
+
+ 
   
   ngOnInit():void{
     
@@ -33,7 +42,6 @@ export class PlanesAutomovilesComponent  implements OnInit  {
       this.seguros=res;
       this.getAutos();
       this.getMarcas();
-    
     });
   }
 
@@ -82,7 +90,15 @@ export class PlanesAutomovilesComponent  implements OnInit  {
           }
 
       }
+    }
 
+    reemplazarSaltosDeLinea(descripcion: string): string {
+      return descripcion.replace(/\\n/g, '<br>');
+    }
+
+    setEstado(){
+
+      this.cliente_vehiculo_service.estado=true;
     }
   }
 

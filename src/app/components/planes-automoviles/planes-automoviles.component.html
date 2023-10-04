@@ -46,11 +46,12 @@
                 </div>
                 <div class="info">
                     <h2>{{seguro.aseguradora}}</h2>
-                    <p>{{seguro.descripcion}}</p>
+                    <p [innerHTML]="reemplazarSaltosDeLinea(seguro.descripcion)"></p>
+
                 </div>
                 <div class="acciones">
-                    <p>Precio: {{seguro.precio}}</p>
-                    <button routerLinkActive="active" routerLink="/planes-personas">Cotizar </button>
+                    <p>Precio: {{seguro.precio_final}}</p>
+                    <button routerLinkActive="active" [routerLink]="['/register',seguro.id_seguro_vehiculo]" (click)="setEstado()">Cotizar </button>
                 </div>
             </div>
         </div>

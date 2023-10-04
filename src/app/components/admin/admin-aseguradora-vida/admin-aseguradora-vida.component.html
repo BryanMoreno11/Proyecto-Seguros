@@ -1,0 +1,48 @@
+<div class="table-container">
+    <h1 class="heading">TABLA ASEGURADORA VIDA</h1>
+    <div class="search-container">
+        <input [(ngModel)]="searchText" type="text" placeholder="Buscar...">
+    </div>
+    <br>
+
+    <a class="btn-insert" routerLink="/admin/admin-add-aseguradora-vida">
+        <img src="assets/boton-agregar (1).png" alt="Insertar">
+    </a>
+    <br>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Teléfono</th>
+                <th>Descripción</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let aseguradorasvida of aseguradorasvidas |aseguradoraVida:searchText">
+                <td>{{ aseguradorasvida.nombre }}</td>
+                <td>{{ aseguradorasvida.correo }}</td>
+                <td>{{ aseguradorasvida.telefono }}</td>
+                <td>{{ aseguradorasvida.descripcion }}</td>
+                <td>
+                    <img [src]="aseguradorasvida.imagen" alt="" class="card-img">
+                </td>
+                <td>
+
+                    <div class="action-icons">
+                        <a class="img-link" [routerLink]="['/admin/admin-edit-aseguradora-vida', aseguradorasvida.id_aseguradora_vida]">
+                            <img src="assets/lapiz.png" alt="Editar">
+                        </a>
+                        <a class="img-link" (click)="eliminarAseguradoraVida(aseguradorasvida.id_aseguradora_vida)">
+                            <img src="assets/borrar (2).png" alt="Eliminar">
+                        </a>
+                    </div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

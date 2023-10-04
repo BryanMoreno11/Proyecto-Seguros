@@ -21,7 +21,7 @@ class PlanVidaController{
         //---Listar
     public async list(req:Request,res:Response){
         try{ 
-            const plan_vida=await db.query("SELECT * FROM vista_plan_vida");
+            const plan_vida=await db.query("SELECT * FROM vista_plan_vida order by id_plan_vida");
             res.json(plan_vida);
         
     }catch(error){

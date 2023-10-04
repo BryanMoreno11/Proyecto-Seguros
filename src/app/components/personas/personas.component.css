@@ -1,184 +1,484 @@
-/* Personas */
+/* slider.component.css */
 
-.hero {
-    position: relative;
-    height: 65vh;
-}
-
-.portada-imagen {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-}
-
-.degradado {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: 1000;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background: linear-gradient(90deg, #000 55.83%, rgba(0, 0, 0, 0.00) 90.54%, rgba(0, 0, 0, 0.00) 95.65%, rgba(0, 0, 0, 0.00) 100%);
-}
-
-.hero-frase {
-    position: absolute;
-    z-index: 10000;
-    top: 0;
-    left: 25px;
-    bottom: 0;
-    font-size: 3vw;
-    color: var(--color_secundario);
-    place-items: center;
-    display: grid;
-}
-
-.hero-frase__1 {
-    font-weight: bold;
-}
-
-.hero-frase__2 {
+.slider-container {
+    background-color: #000;
+    /* Fondo oscuro de la página */
     color: #fff;
-    font-size: 1.8vw;
-}
-
-
-/* Cards */
-
-.beneficios h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: var(--color_secundario);
-}
-
-.cards {
-    display: grid;
-    grid-template-rows: repeat(auto-fit, 200px);
-    grid-auto-rows: 200px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    place-items: center;
-    gap: 40px;
-    height: auto;
-}
-
-.card {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    border-radius: 30px;
-    outline: none;
-    border: none;
+    /* Texto blanco */
+    padding: 20px;
     overflow: hidden;
-    display: grid;
-    place-items: center;
+    /* Evita el desbordamiento de las imágenes en el último frame */
+    position: relative;
 }
 
-.card img {
+.slider-frame {
     width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    object-fit: cover;
-    z-index: -1;
+    /* Ocupa todo el ancho de la página */
+    height: auto;
+    margin-top: 20px;
+    overflow: hidden;
+    position: relative;
+    /* Para que el slider esté por encima del fondo oscuro */
 }
 
-.card p {
-    color: #fff;
-    font-weight: 500;
+.slider-frame ul {
+    display: flex;
+    padding: 0;
+    width: 400%;
+    animation: slide 20s linear infinite;
+    /* Cambiado a linear */
+}
+
+.slider-frame li {
+    width: 25%;
+    /* 4 imágenes en una fila */
+    list-style: none;
+}
+
+.slider-frame img {
+    width: 100%;
+    height: auto;
+    /* Para mantener la proporción de aspecto */
+    display: block;
+    opacity: 0.7;
+    /* Opacidad para el efecto de fondo oscuro */
+    max-height: 800px;
+    /* Ajusta la altura según tus necesidades */
+}
+
+@keyframes slide {
+    0%,
+    100% {
+        margin-left: 0;
+    }
+    20% {
+        margin-left: 0;
+    }
+    25% {
+        margin-left: -100%;
+    }
+    45% {
+        margin-left: -100%;
+    }
+    50% {
+        margin-left: -200%;
+    }
+    70% {
+        margin-left: -200%;
+    }
+    75% {
+        margin-left: -300%;
+    }
+}
+
+.slider-frame {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider-frame ul {
+    display: flex;
+    padding: 0;
+    width: 400%;
+    animation: slide 20s linear infinite;
+}
+
+.slider-frame li {
+    width: 25%;
+    list-style: none;
+}
+
+.slider-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.7;
+    max-height: 700px;
+}
+
+.welcome-text {
     text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 100%;
+    /* Para que el fondo oscuro cubra todo el ancho del slider */
+}
+
+.welcome-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.welcome-text p {
+    font-size: 1.5rem;
+}
+
+
+/* Estilos para dispositivos móviles */
+
+@media (max-width: 768px) {
+    .welcome-text h1 {
+        font-size: 0.5rem;
+        /* Reducir el tamaño de fuente en dispositivos móviles */
+    }
+    .welcome-text p {
+        font-size: 0.5rem;
+        /* Reducir el tamaño de fuente en dispositivos móviles */
+    }
+}
+
+
+/* Estilos para la sección de "Beneficios" */
+
+.Beneficios {
+    display: flex;
+    flex-direction: column;
     padding: 20px;
 }
 
 
-/* Secciones */
+/* Estilos para el h2 de la sección de Beneficios */
 
-.seccion {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.Beneficios h2 {
+    font-size: 2.5rem;
+    /* Tamaño de fuente */
+    color: #333;
+    /* Color del texto */
+    text-align: center;
+    /* Alineación del texto */
+    margin-bottom: 20px;
+    /* Espaciado inferior */
+    text-transform: uppercase;
+    /* Convertir texto a mayúsculas */
+    letter-spacing: 2px;
+    /* Espaciado entre letras */
 }
 
-.seccion-1,
-.seccion-3 {
-    background-color: #D9D9D9;
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
-.seccion-1 img {
+.card {
+    flex: 1;
+    background-color: #333;
+    /* Fondo oscuro */
+    color: #fff;
+    /* Texto blanco */
+    border: 1px solid #444;
+    /* Borde oscuro */
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+    max-width: calc(33.33% - 20px);
+    /* 3 tarjetas por fila con margen entre ellas */
+    position: relative;
+    overflow: hidden;
+    margin-right: 20px;
+    /* Espacio entre tarjetas */
+    margin-bottom: 20px;
+    /* Espacio entre filas */
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    /* Aumenta el tamaño al 105% */
+}
+
+.card:last-child {
+    margin-right: 0;
+    /* Sin margen en la última tarjeta de cada fila */
+}
+
+.card img {
     max-width: 100%;
-    height: 100%;
+    max-height: 200px;
+    /* Establece la altura máxima para mantener la relación de aspecto */
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+    border-radius: 10px;
+    /* Borde redondeado para la imagen */
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.card p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+
+/* Estilos para dispositivos móviles */
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+        /* Cambiar a una columna en dispositivos móviles */
+    }
+    .card {
+        max-width: 100%;
+        /* Tarjetas ocupan todo el ancho en dispositivos móviles */
+        margin-right: 0;
+        /* Sin margen en dispositivos móviles */
+    }
+}
+
+
+/* Estilos para la sección de "Testimonios" */
+
+h2 {
+    font-size: 2rem;
+    text-align: center;
+    /* Centra el texto horizontalmente */
+    padding: 20px 0;
+    /* Espacio alrededor del título */
+    /* Color de fondo */
+    color: #000;
+    /* Color del texto */
+    border-radius: 10px;
+    /* Borde redondeado */
+    margin: 0 auto 20px;
+    /* Centra horizontalmente y agrega espacio inferior */
+    max-width: 80%;
+    /* Limita el ancho para que sea responsivo */
+}
+
+
+/* Estilos adicionales para dispositivos móviles */
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.5rem;
+        /* Tamaño de fuente más pequeño para dispositivos móviles */
+        padding: 10px 0;
+        /* Espacio reducido alrededor del título */
+    }
+}
+
+.testimonials {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que las tarjetas se envuelvan en varias filas */
+    justify-content: center;
+    /* Centra horizontalmente las tarjetas */
+}
+
+.testimonial-card {
+    max-width: 300px;
+    /* Ancho máximo de la tarjeta */
+    margin: 0 5px 10px;
+    /* Espacio horizontal entre las tarjetas y espacio inferior */
+    background-color: #f9f9f9;
+    /* Fondo de la tarjeta */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    flex: 1;
+}
+
+.testimonial-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10%;
+    /* Para que la imagen sea circular */
     object-fit: cover;
+    /* Mantiene la proporción de aspecto y ajusta el tamaño */
 }
 
-.seccion-2 img {
-    width: 50%;
-    place-self: center;
+.testimonial-content p {
+    font-size: 1rem;
+    margin: 10px 0;
 }
 
-.info {
-    width: 80%;
-    height: 100%;
-    place-self: center;
+.testimonial-content cite {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+
+/* Estilos para el botón de WhatsApp y mensaje */
+
+.whatsapp-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.whatsapp-button {
+    display: block;
+    background-color: #25d366;
+    /* Color de fondo de WhatsApp */
+    color: #fff;
+    /* Color del texto */
+    text-align: center;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.whatsapp-button a {
+    display: block;
+    color: #fff;
+    /* Color del texto */
+    text-decoration: none;
+}
+
+.whatsapp-button img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.whatsapp-message {
+    background-color: #25d366;
+    /* Color de fondo de WhatsApp */
+    color: #fff;
+    /* Color del texto */
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 10px;
+    /* Espacio entre el botón y el mensaje */
+    display: none;
+    /* Inicialmente oculto */
+}
+
+.whatsapp-message.show {
+    display: block;
+    /* Mostrar cuando se agrega la clase "show" */
+}
+
+.whatsapp-message p {
+    margin: 0;
+    font-size: 14px;
+    /* Tamaño de fuente del mensaje */
+}
+
+
+/* Estilos base para los enlaces */
+
+.opciones-cotizacion {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    /* Espacio entre tarjetas */
+}
+
+.tarjeta {
+    background-color: #000;
+    /* Fondo negro predeterminado */
+    color: #fff;
+    /* Color de texto blanco */
+    padding: 10px;
+    /* Espacio interior de la tarjeta reducido */
+    border-radius: 10px;
+    /* Bordes redondeados */
+    text-align: center;
+    /* Alineación del texto en el centro */
+    flex: 0.5;
+    /* Reducir el tamaño de las tarjetas */
+    max-width: 200px;
+    /* Ancho máximo de las tarjetas */
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease;
+    /* Transición de cambio de color de fondo */
+}
+
+.tarjeta:hover {
+    background-color: #333;
+    /* Cambia el fondo al pasar el cursor */
+}
+
+.tarjeta a {
+    text-decoration: none;
+    color: #fff;
+    /* Color de enlace blanco */
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
 }
 
-.info h3 {
-    font-size: 1.7em;
-    text-align: center;
-    margin: 0;
+.tarjeta:hover {
+    transform: scale(1.1);
+    /* Hace que la tarjeta sea un 10% más grande al pasar el cursor */
 }
 
-.info span {
-    color: var(--color_secundario);
+.tarjeta img {
+    max-width: 100%;
+    height: 150px;
+    /* Tamaño fijo de las imágenes */
 }
 
-.info h5 {
-    text-align: center;
-    color: #484848;
-    font-size: 1em;
-    font-weight: 400;
-    margin: 0;
+.tarjeta p {
+    margin: 10px 0;
 }
 
-.info p {
-    text-align: justify;
-    margin: 0;
-    font-size: 1em;
+
+/* Estilos para pantallas más pequeñas (por ejemplo, dispositivos móviles) */
+
+@media (max-width: 768px) {
+    .opciones-cotizacion {
+        flex-direction: column;
+        /* Cambia la dirección de las tarjetas a vertical */
+    }
 }
 
-@media only screen and (max-width: 702px) {
-    /* Hero */
-    .portada-imagen {
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
+
+/* Estilos para pantallas más pequeñas (por ejemplo, dispositivos móviles) */
+
+@media (max-width: 768px) {
+    .opciones-cotizacion {
+        flex-direction: column;
+        /* Cambia la dirección de las tarjetas a vertical */
+    }
+    .tarjeta {
+        margin: 0 auto;
+        flex-direction: none;
+        /* Elimina la distribución equitativa del espacio entre las tarjetas */
         width: 100%;
-        object-fit: cover;
+        justify-content: center;
+        /* Ocupa todo el ancho disponible */
     }
-    #degradado {
-        background: rgba(0, 0, 0, 0.7);
-    }
-    .hero-frase {
-        top: 0;
-        left: 25px;
-        bottom: 0;
-        right: 25px;
-        text-align: center;
-        font-size: 5.5vw !important;
-    }
-    /* cards */
-    .beneficios h2 {
-        font-size: 1.5rem !important;
-    }
-    .info {
-        font-size: 10px !important;
+}
+
+h2 {
+    font-size: 2rem;
+    text-align: center;
+    padding: 20px 0;
+    color: #071ffc;
+    border-radius: 10px;
+    margin: 0 auto 20px;
+    max-width: 80%;
+}
+
+
+/* Estilos adicionales para dispositivos móviles */
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.5rem;
+        padding: 10px 0;
     }
 }

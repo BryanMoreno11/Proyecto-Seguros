@@ -17,24 +17,15 @@
             <h5>Login</h5>
             <p>El acceso está restringido para personal no autorizado, solo los administradores pueden acceder.</p>
             <div class="inputs">
-                <input type="text" placeholder="Nombre de Usuario Administrador">
+                <input type="text" placeholder="Correo de Administrador Autorizado" [(ngModel)]="username">
                 <br>
-                <input type="password" placeholder="Contraseña">
+                <input type="password" placeholder="Contraseña" [(ngModel)]="password">
             </div>
+
 
             <br><br>
 
-            <div class="remember-me--forget-password">
-                <!-- Angular -->
-                <label>
-		<input type="checkbox" name="item" checked/>
-		<span class="text-checkbox">Remember me</span>
-	</label>
-                <p>¿Olviste tu Contraseña?</p>
-            </div>
-
-            <br>
-            <button>Ingresar</button>
+            <button (click)="onSubmit()">Ingresar</button>
         </div>
 
     </div>

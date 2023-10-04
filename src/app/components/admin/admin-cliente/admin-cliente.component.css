@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+/* Estilos generales para h1 */
+
+h1 {
+    color: black;
+    font-family: 'Playfair Display', serif;
+}
+
+
+/* Estilos generales para .table-container */
+
+.table-container {
+    padding: 0 1%;
+    margin: 40px auto 0;
+    /* Reduje el margen superior */
+}
+
+
+/* Estilos para .heading */
+
+.heading {
+    font-size: 28px;
+    /* Tamaño de fuente reducido */
+    text-align: center;
+    color: black;
+    margin-bottom: 20px;
+    /* Reduje el margen inferior */
+    font-family: 'Playfair Display', serif;
+}
+
+
+/* Estilos para .table */
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+/* Estilos para .table thead */
+
+.table thead {
+    background-color: #0056b3;
+}
+
+
+/* Estilos para .table thead tr th */
+
+.table thead tr th {
+    font-size: 18px;
+    /* Tamaño de fuente reducido */
+    font-weight: 600;
+    letter-spacing: 0.35px;
+    color: white;
+    padding: 12px;
+    vertical-align: top;
+}
+
+
+/* Estilos para .table tbody tr td */
+
+.table tbody tr td {
+    font-size: 18px;
+    /* Tamaño de fuente reducido */
+    letter-spacing: 0.35px;
+    font-weight: normal;
+    color: #ffffff;
+    background-color: #c5e2f9;
+    padding: 8px;
+    text-align: center;
+}
+
+
+/* Estilos para .img-link */
+
+.img-link {
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+
+/* Estilos para .btn-insert */
+
+.btn-insert {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 18px;
+    /* Tamaño de fuente reducido */
+    color: #007bff;
+    font-family: 'Playfair Display', serif;
+}
+
+
+/* Estilos para .btn-insert:hover */
+
+.btn-insert:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+
+/* Estilos para .table tbody tr td */
+
+.table tbody tr:nth-child(even) td {
+    background-color: #c5e2f9;
+    color: #0056b3;
+}
+
+
+/* Estilos para .table tbody tr td */
+
+.table tbody tr:nth-child(odd) td {
+    background-color: white;
+    color: #0056b3;
+}
+
+
+/* Estilos para .table tbody tr td */
+
+.table tbody tr td {
+    border: 1px solid #dee2e685;
+}
+
+
+/* Estilos para .table thead tr th */
+
+.table thead tr th {
+    border: 1px solid #dee2e685;
+}
+
+
+/* Estilos para .table */
+
+.table {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+
+/* Estilos para .select-container select:focus y .search-container input[type="text"]:focus */
+
+.select-container select:focus,
+.search-container input[type="text"]:focus {
+    border-color: #007bff;
+}
+
+
+/* Estilos para .select-container y .search-container */
+
+.select-container,
+.search-container {
+    text-align: center;
+    margin-bottom: 20px;
+    /* Agregado para separación */
+}
+
+
+/* Estilos adicionales para dispositivos móviles */
+
+@media (max-width: 768px) {
+    /* Redefine los estilos según tus necesidades para dispositivos móviles */
+    .heading {
+        font-size: 24px;
+    }
+    .table thead tr th {
+        font-size: 16px;
+    }
+    .table tbody tr td {
+        font-size: 16px;
+    }
+    .btn-insert {
+        font-size: 16px;
+    }
+}
+
+
+/* Estilos para el campo de búsqueda */
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+
+/* Estilos para el placeholder del campo de búsqueda */
+
+input[type="text"]::placeholder {
+    color: #999;
+}
+
+
+/* Estilos adicionales para el campo de búsqueda cuando se enfoca */
+
+input[type="text"]:focus {
+    border-color: #007bff;
+    /* Cambia el color del borde cuando se enfoca */
+}
+
+
+/* Estilos para los select */
+
+.select-container select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    background-color: white;
+    /* Cambia el color de fondo del select */
+}
+
+
+/* Estilos para las opciones de los select */
+
+.select-container select option {
+    font-size: 16px;
+}
+
+
+/* Estilos adicionales para los select cuando se enfocan */
+
+.select-container select:focus {
+    border-color: #007bff;
+    /* Cambia el color del borde cuando se enfoca */
+}

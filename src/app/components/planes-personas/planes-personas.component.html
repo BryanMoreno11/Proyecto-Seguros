@@ -21,7 +21,7 @@
                             <h3>{{ plan.plan_vida_nombre }}</h3>
                             <p>{{ plan.plan_vida_descripcion }}</p>
                             <p class="precio">{{ plan.precio | currency }}</p>
-                            <a routerLink="/register">Solicitar</a>
+                            <a [routerLink]="['/register',plan.id_plan_vida]" (click)="setEstado()">Solicitar</a>
                         </div>
 
                     </div>

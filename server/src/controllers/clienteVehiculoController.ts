@@ -6,10 +6,10 @@ class ClienteVehiculoController{
         const { id_cliente, id_seguro_vehiculo } = req.body;
     
         try {
-            const queryText = "INSERT INTO cliente_vehiculo ( id_cliente, id_seguro_vehiculo) VALUES ($1, $2)";
+            const queryText = "INSERT INTO cliente_vehiculo ( id_cliente, id_seguro_vehiculo) VALUES ($1, $2) RETURNING *";
             const queryParams = [ id_cliente, id_seguro_vehiculo ];
             const result = await db.query(queryText, queryParams);
-            res.json({ text: "Clientevehiculo guardado" });
+            res.json(result);
         } catch (error) {
             console.error("Error al crear clientevehiculo:", error);
             res.status(500).json({ error: "Ocurrió un error al crear el clientevehiculo" });
@@ -19,7 +19,7 @@ class ClienteVehiculoController{
     //---Listar
     public async list(req:Request,res:Response){
         try{ 
-            const clientevehiculo=await db.query("SELECT * FROM cliente_vehiculo");
+            const clientevehiculo=await db.query("SELECT * FROM vista_cliente_vehiculo");
             res.json(clientevehiculo);
         
     }catch(error){
@@ -32,7 +32,7 @@ class ClienteVehiculoController{
 public async getOne(req:Request, res:Response){
     const id=req.params.id;
     try{
-        const query= await db.query("SELECT * FROM cliente_vehiculo WHERE id_cliente_vehiculo =$1",[id]);
+        const query= await db.query("SELECT * FROM vista_cliente_vehiculo WHERE id_cliente_vehiculo =$1",[id]);
         res.json(query);
     }catch(error){
         console.error("Error al listar el clientevehiculo:", error);

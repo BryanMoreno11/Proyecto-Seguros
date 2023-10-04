@@ -1,0 +1,30 @@
+<div class="form-container">
+    <form (ngSubmit)="edit ? modificarAseVehi(forma): insertarAseVehi(forma)" #forma="ngForm">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" #nombre="ngModel" [class.is-invalid]="nombre.invalid && nombre.touched" [(ngModel)]="aseguradora_vehiculo.nombre" class="form-control" placeholder="Ingrese el nombre" required>
+            <small *ngIf="nombre.invalid && nombre.touched" style="color: red;"> Ingrese el nombre de la aseguradora</small>
+        </div>
+        <div class="form-group">
+            <label for="nombre">Correo:</label>
+            <input type="text" id="correo" name="correo" #correo="ngModel" [class.is-invalid]="correo.invalid && correo.touched" [(ngModel)]="aseguradora_vehiculo.correo" class="form-control" placeholder="Ingrese el Correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+            <small *ngIf="correo.invalid && correo.touched" style="color: red;"> Ingrese un correo válido</small>
+        </div>
+        <div class="form-group">
+            <label for="nombre">Telefono:</label>
+            <input type="text" id="telefono" name="telefono" #telefono="ngModel" [class.is-invalid]="telefono.invalid && telefono.touched" [(ngModel)]="aseguradora_vehiculo.telefono" class="form-control" placeholder="Ingrese el Telefono" required minlength="10" pattern="[0-9]{10}">
+            <small *ngIf="telefono.invalid && telefono.touched" style="color: red;"> Ingrese un número de teléfono válido</small>
+        </div>
+        <div class="form-group">
+            <label for="nombre">Descripcion:</label>
+            <input type="text" id="descripcion" name="descripcion" #descripcion="ngModel" [class.is-invalid]="descripcion.invalid && descripcion.touched" [(ngModel)]="aseguradora_vehiculo.descripcion" class="form-control" placeholder="Ingrese una descripcion" required>
+            <small *ngIf="descripcion.invalid && descripcion.touched" style="color: red;"> Ingrese una descripción</small>
+        </div>
+        <div class="form-group">
+            <label for="nombre">Imagen:</label>
+            <input type="text" id="imagen" name="imagen" #imagen="ngModel" [class.is-invalid]="imagen.invalid && imagen.touched" [(ngModel)]="aseguradora_vehiculo.imagen" class="form-control" placeholder="Ingrese una Imagen (URL)" required>
+            <small *ngIf="imagen.invalid && imagen.touched" style="color: red;"> Ingrese una imágen</small>
+        </div>
+        <button type="submit" class="btn-submit">Registrar</button>
+    </form>
+</div>

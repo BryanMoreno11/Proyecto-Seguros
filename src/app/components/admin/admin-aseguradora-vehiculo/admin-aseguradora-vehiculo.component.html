@@ -1,0 +1,45 @@
+<div class="card-container">
+    <h1 class="heading">Tabla Aseguradora Vehículo</h1>
+    <div class="search-container">
+        <input [(ngModel)]="searchText" type="text" placeholder="Buscar...">
+    </div>
+    <br>
+    <a class="btn-insert" routerLink="/admin/admin-add-aseguradora-vehiculo">
+        <img src="assets/boton-agregar (1).png" alt="Insertar">
+    </a>
+    <br>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Teléfono</th>
+                <th>Descripción</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let aseguradorasauto of aseguradorasautos | aseguradoraVehiculo:searchText">
+                <td>{{ aseguradorasauto.nombre }}</td>
+                <td>{{ aseguradorasauto.correo }}</td>
+                <td>{{ aseguradorasauto.telefono }}</td>
+                <td [innerHTML]="reemplazarSaltosDeLinea(aseguradorasauto.descripcion)"></td>
+                <td>
+                    <img [src]="aseguradorasauto.imagen" alt="" class="card-img">
+                </td>
+                <td>
+                    <div class="action-icons">
+                        <a class="img-link" [routerLink]="['/admin/admin-edit-aseguradora-vehiculo', aseguradorasauto.id_aseguradora_vehiculo]">
+                            <img src="assets/lapiz.png" alt="Editar">
+                        </a>
+                        <a class="img-link" (click)="eliminarAseguradoraVida(aseguradorasauto.id_aseguradora_vehiculo)">
+                            <img src="assets/borrar (2).png" alt="Eliminar">
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

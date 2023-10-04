@@ -1,0 +1,33 @@
+<!-- app/src/app/tu-componente/formulario-registro/formulario-registro.component.html -->
+
+<div class="form-container">
+    <form (ngSubmit)="edit ? modificarPlanVida(forma): insertarPlanVida(forma)" #forma="ngForm">
+        <div class="form-group">
+            <label for="aseguradora">Aseguradora:</label>
+            <select id="aseguradora" name="aseguradora_nombre" #aseguradora_nombre="ngModel" [class.is-invalid]="aseguradora_nombre.invalid && aseguradora_nombre.touched" [(ngModel)]="planVida.id_aseguradora_vida" class="form-control" required>
+           <option [value]=""  selected ></option>
+          <option [value] = "aseguradora.id_aseguradora_vida" *ngFor="let aseguradora of aseguradoras" >{{aseguradora.nombre}}</option>
+          <!-- Agrega más opciones según sea necesario -->
+        </select>
+            <small *ngIf="aseguradora_nombre.invalid && aseguradora_nombre.touched" style="color: red;"> Seleccione una aseguradora</small>
+        </div>
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" #nombre="ngModel" [class.is-invalid]="nombre.invalid && nombre.touched" [(ngModel)]="planVida.nombre" class="form-control" placeholder="Ingrese el nombre" required>
+            <small *ngIf="nombre.invalid && nombre.touched" style="color: red;"> Ingrese un nombre para el plan de vida</small>
+
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" #descripcion="ngModel" [class.is-invalid]="descripcion.invalid && descripcion.touched" [(ngModel)]="planVida.descripcion" class="form-control" placeholder="..." required=""></textarea>
+            <small *ngIf="descripcion.invalid && descripcion.touched" style="color: red;"> Ingrese una descripción para el plan de vida</small>
+
+        </div>
+        <div class="form-group">
+            <label for="precio">Precio:</label>
+            <input type="text" id="precio" name="precio" #precio="ngModel" [class.is-invalid]="precio.invalid && precio.touched" [(ngModel)]="planVida.precio" class="form-control" placeholder="Ingrese el precio" required pattern="^[1-9]\d*$">
+            <small *ngIf="precio.invalid && precio.touched" style="color: red;"> Ingrese un precio para el plan de vida</small>
+        </div>
+        <button type="submit" class="btn-submit">Registrar</button>
+    </form>
+</div>

@@ -1,0 +1,37 @@
+<div class="table-container">
+
+    <h1 class="heading">TABLA DE AÑOS</h1>
+    <a class="btn-insert" routerLink="/admin/admin-add-anio">
+        <img src="assets/boton-agregar (1).png" alt="Insertar">
+    </a>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Factor de riesgo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let anio of anios;">
+                <td>{{anio.nombre}}</td>
+                <td>{{anio.factor_riesgo}}</td>
+                <td>
+                    <!-- Para la edición -->
+                    <a class="img-link" [routerLink]="['/admin/admin-edit-anio', anio.id_anio]">
+                        <img src="assets/lapiz.png" alt="Editar">
+                    </a>
+
+                    <!-- Para la eliminación -->
+                    <a class="img-link" (click)="eliminarAnio(anio.id_anio)">
+                        <img src="assets/borrar (2).png" alt="Eliminar">
+                    </a>
+
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

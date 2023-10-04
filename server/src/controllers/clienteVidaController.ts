@@ -10,10 +10,10 @@ public async create(req:Request, res:Response){
     const {id_cliente ,id_plan_vida } = req.body;
 
     try {
-        const queryText = "INSERT INTO cliente_vida ( id_cliente ,id_plan_vida ) VALUES ($1, $2)";
+        const queryText = "INSERT INTO cliente_vida ( id_cliente ,id_plan_vida ) VALUES ($1, $2)  RETURNING *";
         const queryParams = [ id_cliente ,id_plan_vida ];
         const result = await db.query(queryText, queryParams);
-        res.json({ text: "Cliente_Vida guardado" });
+        res.json(result);
     } catch (error) {
         console.error("Error al crear Cliente_Vida:", error);
         res.status(500).json({ error: "Ocurrió un error al crear Cliente_Vida" });
@@ -23,7 +23,7 @@ public async create(req:Request, res:Response){
 //---Listar
 public async list(req:Request,res:Response){
     try{ 
-        const clientevida=await db.query("SELECT * FROM cliente_vida");
+        const clientevida=await db.query("SELECT * FROM vista_cliente_vida");
         res.json(clientevida);
     
 }catch(error){
@@ -35,7 +35,7 @@ public async list(req:Request,res:Response){
 public async getOne(req:Request, res:Response){
     const id=req.params.id;
     try{
-        const query= await db.query("SELECT * FROM cliente_vida WHERE id_cliente_vida =$1",[id]);
+        const query= await db.query("SELECT * FROM vista_cliente_vida WHERE id_cliente_vida =$1",[id]);
         res.json(query);
     }catch(error){
         console.error("Error al listar Cliente_vida", error);
@@ -67,8 +67,6 @@ public delete(req:Request, res:Response){
     }catch(error){
         res.status(500).json({error:"No fue posible eliminar Cliente_vida de id "+req.params.id});
     }
-
-    
 }
 }
 

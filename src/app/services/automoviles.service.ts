@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AutomovilesService {
   
-  API_URL= 'http://localhost:3000/api/';
+  API_URL= 'https://backend-tutorial-rxz2.onrender.com/api/';
 
 
   constructor(private http: HttpClient) {}
@@ -43,5 +43,9 @@ export interface Automovil{
   valor_cotizacion:number;
 }
 
+export interface Vista_Automovil{
+  marca:string;
+  anio:string;
+}
 
 

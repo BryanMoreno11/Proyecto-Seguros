@@ -1,10 +1,10 @@
 <!-- app/src/app/tu-componente/formulario-registro/formulario-registro.component.html -->
 
 <div class="form-container">
-    <form>
+    <form (ngSubmit)="edit ? modificarAutomovil(forma): insertarAutomovil(forma)" #forma="ngForm">
         <div class="form-group">
             <label for="marca">Marca:</label>
-            <select id="marca" name="marca_auto" [(ngModel)]="marca_auto" (change)="getModelos()" class="form-control" (change)="calcularCotizacion()">
+            <select id="marca" name="marca_auto" [(ngModel)]="marca_auto" (change)="getModelos()" class="form-control" (change)="calcularCotizacion()" required>
            <option [value]="" name="" ></option>
           <option *ngFor="let marca of marcas" >{{marca}}</option>
           <!-- Agrega más opciones según sea necesario -->
@@ -12,26 +12,28 @@
         </div>
         <div class="form-group">
             <label for="modelo">Modelo:</label>
-            <select id="modelo" name="modelo" class="form-control" [(ngModel)]="automovil.id_modelo" (change)="calcularCotizacion()">
+            <select id="modelo" name="modelo" class="form-control" [(ngModel)]="automovil.id_modelo" (change)="calcularCotizacion()" required>
                 <option name="" ></option>
           <option [value]="modelo.id_modelo" *ngFor="let modelo of modelos_filtro">{{modelo.nombre}} </option>
         </select>
         </div>
         <div class="form-group">
             <label for="anio">Año:</label>
-            <select id="anio" name="anio" class="form-control" [(ngModel)]="automovil.id_anio" (change)="calcularCotizacion()">
+            <select id="anio" name="anio" class="form-control" [(ngModel)]="automovil.id_anio" (change)="calcularCotizacion()" required> 
             <option name="" ></option>
           <option *ngFor="let anio of anios" [value]="anio.id_anio">{{anio.nombre}}</option>
         </select>
         </div>
         <div class="form-group">
             <label for="valorMercado">Valor Mercado:</label>
-            <input type="text" id="valorMercado" name="valorMercado" [(ngModel)]="automovil.valor_mercado" class="form-control" placeholder="Ingrese el valor de mercado" (input)="calcularCotizacion()">
+            <input type="text" id="valorMercado" name="valorMercado" #valorMercado="ngModel" [class.is-invalid]="valorMercado.invalid && valorMercado.touched" [(ngModel)]="automovil.valor_mercado" class="form-control" placeholder="Ingrese el valor de mercado" (input)="calcularCotizacion()"
+                required pattern="^[1-9]\d*$">
+            <small *ngIf="valorMercado.invalid && valorMercado.touched" style="color: red;"> Ingrese un valor de mercado válido</small>
         </div>
         <div class="form-group">
             <label for="valorCotizacion">Valor Cotización:</label>
             <p *ngIf="automovil.valor_cotizacion>0">{{automovil.valor_cotizacion}}</p>
         </div>
-        <button type="submit" class="btn-submit" (click)="edit ? modificarAutomovil(): insertarAutomovil()">Registrar</button>
+        <button type="submit" class="btn-submit">Registrar</button>
     </form>
 </div>

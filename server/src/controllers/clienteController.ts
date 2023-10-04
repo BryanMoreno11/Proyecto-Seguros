@@ -6,10 +6,11 @@ class ClienteController{
         const {  cedula, nombre, apellido, fecha_nacimiento,provincia,ciudad,telefono,correo } = req.body;
     
         try {
-            const queryText = "INSERT INTO cliente ( cedula, nombre, apellido, fecha_nacimiento,provincia,ciudad,telefono,correo ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)";
+            const queryText = "INSERT INTO cliente ( cedula, nombre, apellido, fecha_nacimiento,provincia,ciudad,telefono,correo ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *";
             const queryParams = [ cedula, nombre, apellido, fecha_nacimiento,provincia,ciudad,telefono,correo ];
             const result = await db.query(queryText, queryParams);
-            res.json({ text: "Cliente guardado" });
+            res.json(result);
+          
         } catch (error) {
             console.error("Error al crear cliente:", error);
             res.status(500).json({ error: "Ocurrió un error al crear el cliente" });
@@ -19,7 +20,7 @@ class ClienteController{
     //---Listar
     public async list(req:Request,res:Response){
         try{ 
-            const cliente=await db.query("SELECT * FROM cliente");
+            const cliente=await db.query("SELECT * FROM cliente order by id_cliente");
             res.json(cliente);
         
     }catch(error){

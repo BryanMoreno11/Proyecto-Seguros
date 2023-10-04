@@ -1,0 +1,42 @@
+<div class="sidebar">
+    <div class="admin-icon">
+        <img src="assets/usuario (2).png" alt="Icono de Administrador">
+    </div>
+    <li>
+        Bienvenido de vuelta: {{ userEmail }}
+    </li>
+    <ul>
+        <li>
+            <a class="btn-dash" routerLink="/admin/admin-dashboard">Dashboard</a>
+        </li>
+        <li>
+            <a class="btn-clientes" routerLink="/admin/admin-cliente">Clientes</a>
+        </li>
+        <li>
+            <a class="btn-anios" routerLink="/admin/admin-anio">Años</a>
+        </li>
+        <li>
+            <a class="btn-aseguradora-vehiculo" routerLink="/admin/admin-aseguradora-vehiculo">Aseguradora Vehiculos</a>
+        </li>
+        <li>
+            <a class="btn-aseguradora-vida" routerLink="/admin/admin-aseguradora-vida">Aseguradora Vida</a>
+        </li>
+        <li>
+            <a class="btn-automovil" routerLink="/admin/admin-automovil">Automoviles</a>
+        </li>
+        <li>
+            <a class="btn-modelo" routerLink="/admin/admin-modelo">Modelos</a>
+        </li>
+        <li>
+            <a class="btn-planVida" routerLink="/admin/admin-plan-vida">Planes de Vida</a>
+        </li>
+        <li>
+            <a class="btn-seguros-vehiculo" routerLink="/admin/admin-seguro-vehiculo">Seguros Vehiculos</a>
+        </li>
+
+        <li>
+            <button (click)="onClick()">Cerrar Sesión</button>
+        </li>
+    </ul>
+
+</div>

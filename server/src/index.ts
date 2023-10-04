@@ -13,6 +13,7 @@ import planVida from './routes/planVida';
 import cliente from './routes/cliente';
 import clienteVehiculo from './routes/clienteVehiculo';
 import clienteVida from './routes/cliente_Vida';
+import correoRoutes from './routes/correoRoutes';
 
 class Server{
 public app: Application
@@ -48,6 +49,7 @@ routes():void{
     this.app.use('/api/cliente', cliente);
     this.app.use('/api/clienteVehiculo', clienteVehiculo);
     this.app.use('/api/clientevida', clienteVida);
+    this.app.use('/api/envio',correoRoutes)
 
 }
 

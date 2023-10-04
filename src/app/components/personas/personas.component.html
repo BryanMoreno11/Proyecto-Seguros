@@ -1,72 +1,137 @@
-<section class="hero">
-    <div id="degradado" class="degradado"></div>
-    <div class="hero-frase">
-        <p> Encuentra los Mejores Seguros de
-            <br><span class="hero-frase__1">Vida y Automóvil en un Solo Lugar.</span>
-            <br><span class="hero-frase__2">Cotiza ahora y encuentra el seguro que se adapte <br>a tus necesidades.</span>
-        </p>
+<div class="slider-container">
+    <div class="slider-frame">
+        <ul>
+            <li><img src="../../../assets/portada-hero.jpg" alt=""></li>
+            <li><img src="../../../assets/3.jpg" alt=""></li>
+            <li><img src="../../../assets/1.jpg" alt=""></li>
+            <li><img src="../../../assets/2.png" alt=""></li>
+        </ul>
     </div>
-    <img class="portada-imagen" src="../../../assets/portada-hero.jpg" alt="">
-</section>
+    <div class="welcome-text">
+        <h1>Bienvenido a nuestro Broker de Seguros</h1>
+        <p>Tu compañero de confianza para seguros de vida y automóviles.</p>
+    </div>
+    <!-- Botón de WhatsApp -->
+    <div class="whatsapp-container">
+        <div class="whatsapp-button">
+            <a href="https://api.whatsapp.com/send?phone=593993879732" target="_blank">
+                <img src="../../../assets/whatsapp (1).png" alt="WhatsApp">
+            </a>
+        </div>
+        <div class="whatsapp-message" id="message">
+            Deseo hablar con un agente
+        </div>
 
-<div class="container">
-    <div class="beneficios">
-        <h2>Seis razones para tener un seguro de vida y vivir tranquilo</h2>
-        <section class="cards">
+    </div>
+</div>
+
+<div class="content">
+
+    <section class="Beneficios">
+        <h2>Beneficios que ofrece nuestra empresa</h2>
+        <div class="row">
             <div class="card">
-                <p>Te protege en caso de incapacidad temporal o permanente</p>
                 <img src="../../../assets/card-1.jpg" alt="">
+                <h3>Protección</h3>
+                <p>Te protege en caso de incapacidad temporal o permanente</p>
             </div>
             <div class="card">
                 <img src="../../../assets/card-2.jpg" alt="">
+                <h3>Mensualidad</h3>
                 <p>Recibes una mensualidad por pérdida de empleo</p>
             </div>
             <div class="card">
                 <img src="../../../assets/card-3.jpg" alt="">
+                <h3>Poliza</h3>
                 <p>La póliza se adapta a tu presupuesto</p>
             </div>
+        </div>
+        <div class="row">
             <div class="card">
-                <img src="../../../assets/card-4.jpg" alt="">
-                <p>Cubre los gastos de tu funeral</p>
+                <img src="../../../assets/unoi.png" alt="">
+                <h3>Comparativa</h3>
+                <p>Comparación de precios y coberturas</p>
             </div>
             <div class="card">
-                <img src="../../../assets/card-5.jpg" alt="">
-                <p>La cobertura aplica a toda causa de fallecimiento</p>
+                <img src="../../../assets/persona2.png" alt="">
+                <h3>Asesoramiento</h3>
+                <p>Asesoramiento personalizado</p>
             </div>
             <div class="card">
                 <img src="../../../assets/card-6.jpg" alt="">
-                <p>Asegura el futuro de tu familia</p>
+                <h3>Ofertas</h3>
+                <p>Descuentos y promociones exclusivas</p>
             </div>
-        </section>
-    </div>
-    <br><br><br>
-    <div class="seccion seccion-1">
-        <div class="info">
-            <h3>¿Por qué contratar <span>FacilitaSeguros?</span></h3>
-            <h5>¡Confía en los expertos y no te preocupes más!</h5>
-            <p>Al trabajar con nosotros, tendrás acceso a una extensa selección de seguros de vida y automóvil de diferentes empresas líderes en el mercado. Podrás comparar coberturas, precios y beneficios para encontrar la opción que mejor se adapte a tus
-                necesidades y presupuesto.</p>
         </div>
-        <img src="../../../assets/seccion-1.jpg" alt="">
+    </section>
+    <h2>Testimonios de nuestros Clientes</h2>
+    <section class="testimonials">
+
+        <div class="testimonial-card">
+            <div class="testimonial-image">
+                <img src="../../../assets/persona1.jpg" alt="Persona 1">
+            </div>
+            <div class="testimonial-content">
+                <p> "Nunca había sido tan fácil encontrar el seguro adecuado."</p>
+                <cite>Maria Avellaneda</cite>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-image">
+                <img src="../../../assets/usuario2.jpg" alt="Persona 2">
+            </div>
+            <div class="testimonial-content">
+                <p>"Encontré el seguro perfecto para mis necesidades. Excelente servicio."</p>
+                <cite>John Doe</cite>
+            </div>
+        </div>
+
+        <div class="testimonial-card">
+            <div class="testimonial-image">
+                <img src="../../../assets/usuario3.jpg" alt="Persona 3">
+            </div>
+            <div class="testimonial-content">
+                <p>"Excelente, me ayudaron a encontrar el seguro perfecto para mi familia."</p>
+                <cite> Luis García</cite>
+            </div>
+        </div>
+
+        <div class="testimonial-card">
+            <div class="testimonial-image">
+                <img src="../../../assets/usuario4.jpg" alt="Persona 4">
+            </div>
+            <div class="testimonial-content">
+                <p>"Encontré las mejores ofertas de seguro de vida gracias a este broker"</p>
+                <cite>Ana Martínez</cite>
+            </div>
+        </div>
+
+        <!-- Agrega más tarjetas de testimonios aquí -->
+    </section>
+    <br>
+    <br>
+    <h2>¿Que esperas para comenzar a cotizar?</h2>
+    <div class="opciones-cotizacion">
+
+        <div class="tarjeta">
+            <a [routerLink]="['/planes-personas']">
+                <img src="../../../assets/seccion-1.jpg" alt="Seguro de Vida">
+                <p>SEGUROS DE VIDA</p>
+            </a>
+        </div>
+
+        <div class="tarjeta">
+            <a [routerLink]="['/planes-automoviles']">
+                <img src="../../../assets/seguros-para-autos.jpg" alt="Seguro de Automóviles">
+                <p>SEGUROS DE AUTOS</p>
+            </a>
+        </div>
     </div>
 
-    <br><br><br>
-    <div class="seccion seccion-2">
-        <img src="../../../assets/seccion-2.jpg" alt="">
-        <div class="info">
-            <h3>¿Qué beneficios obtengo de <span>FacilitaSeguros?</span></h3>
-            <p> En lugar de visitar múltiples compañías de seguros, te proporcionamos una plataforma centralizada donde puedes obtener toda la información que necesitas y cotizar en un solo lugar. Ahorrarás tiempo y esfuerzo al evitar búsquedas complicadas
-                y llamadas a distintas aseguradoras.</p>
-        </div>
-    </div>
-    <br><br><br>
-    <div class="seccion seccion-3">
-        <div class="info">
-            <h3>Transparencia y confianza</h3>
-            <p>Como intermediarios, trabajamos para ofrecerte transparencia en todas las etapas del proceso. Te proporcionaremos información clara y detallada sobre cada seguro, para que puedas tomar decisiones informadas y tener la tranquilidad de que estás
-                protegiendo lo que más importa.</p>
-        </div>
-        <img src="../../../assets/seccion-3.jpg" alt="">
-    </div>
+
+    <br>
+    <br>
+    <app-footer></app-footer>
 </div>
-<app-footer></app-footer>
+
+<!-- Resto de tu código Angular y el pie de página -->

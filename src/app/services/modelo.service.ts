@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class ModeloService {
-  API_URL= 'http://localhost:3000/api/';
+  API_URL= 'https://backend-tutorial-rxz2.onrender.com/api/';
 
 
   constructor(private http:HttpClient) { }
@@ -30,7 +30,7 @@ export class ModeloService {
     return this.http.post(`${this.API_URL}modelo`,modelo);
   }
   //Update
-  updateModelo(id:string, modelo:Modelo){
+  updateModelo(id:string|number, modelo:Modelo){
     return this.http.put(`${this.API_URL}modelo/${id}`,modelo);
   }
 }
@@ -39,5 +39,5 @@ export interface Modelo{
   id_modelo:number;
   nombre: string;
   marca: string;
-  precio:number;
+  factor_riesgo:number;
 }

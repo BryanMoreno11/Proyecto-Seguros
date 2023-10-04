@@ -1,0 +1,41 @@
+<div class="container">
+    <h2>Editar Seguro de Vehículo</h2>
+    <form (ngSubmit)="edit ? modificarSeguro(forma): insertarSeguro(forma)" #forma="ngForm">
+        <!-- Combo box para seleccionar aseguradora -->
+        <div class="form-group">
+            <label for="aseguradoras">Aseguradora:</label>
+            <select id="aseguradoras" name="aseguradora" #aseguradora="ngModel" [class.is-invalid]="aseguradora.invalid && aseguradora.touched" [(ngModel)]="seguroVehiculo.id_aseguradora_vehiculo" required>
+                <option value=""></option>
+                <option *ngFor="let aseguradora of aseguradoras" [value]="aseguradora.id_aseguradora_vehiculo">{{ aseguradora.nombre }}</option>
+            </select>
+            <small *ngIf="aseguradora.invalid && aseguradora.touched" style="color: red;"> Seleccione una aseguradora</small>
+        </div>
+
+        <!-- Combo box para seleccionar automóvil -->
+        <div class="form-group">
+            <label for="automoviles">Automóvil:</label>
+            <select id="automoviles" name="automovil" #automovil="ngModel" [class.is-invalid]="automovil.invalid && automovil.touched" [(ngModel)]="seguroVehiculo.id_vehiculo " (change)="calcularPrecio()" required>
+                <option value="">Selecciona un automóvil</option>
+                <option *ngFor="let automovil of automoviles" [value]="automovil.id_vehiculo">{{ automovil.marca }} {{ automovil.modelo }} {{ automovil.anio }}</option>
+            </select>
+            <small *ngIf="automovil.invalid && automovil.touched" style="color: red;"> Seleccione un automóvil</small>
+
+        </div>
+
+        <div class="form-group">
+            <label for="descuento">Descuento %:</label>
+            <input type="text" name="descuento" #descuento="ngModel" [class.is-invalid]="descuento.invalid && descuento.touched" [(ngModel)]="seguroVehiculo.descuento" class="form-control" (input)="calcularPrecio()" required pattern="^(0|[1-9]\d*)$">
+            <small *ngIf="descuento.invalid && descuento.touched" style="color: red;"> Ingrese un valor válido</small>
+        </div>
+
+        <div class="form-group">
+            <label>Precio final:</label>
+            <p *ngIf="seguroVehiculo.precio>=0">{{seguroVehiculo.precio}}</p>
+        </div>
+
+        <!-- Botón para modificar el seguro -->
+
+        <!-- Botón para guardar el seguro -->
+        <button type="submit" class="btn-submit">Registrar</button>
+    </form>
+</div>

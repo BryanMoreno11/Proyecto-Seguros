@@ -18,10 +18,10 @@ class ClienteVehiculoController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id_cliente, id_seguro_vehiculo } = req.body;
             try {
-                const queryText = "INSERT INTO cliente_vehiculo ( id_cliente, id_seguro_vehiculo) VALUES ($1, $2)";
+                const queryText = "INSERT INTO cliente_vehiculo ( id_cliente, id_seguro_vehiculo) VALUES ($1, $2) RETURNING *";
                 const queryParams = [id_cliente, id_seguro_vehiculo];
                 const result = yield database_1.default.query(queryText, queryParams);
-                res.json({ text: "Clientevehiculo guardado" });
+                res.json(result);
             }
             catch (error) {
                 console.error("Error al crear clientevehiculo:", error);
@@ -33,7 +33,7 @@ class ClienteVehiculoController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const clientevehiculo = yield database_1.default.query("SELECT * FROM cliente_vehiculo");
+                const clientevehiculo = yield database_1.default.query("SELECT * FROM vista_cliente_vehiculo");
                 res.json(clientevehiculo);
             }
             catch (error) {
@@ -47,7 +47,7 @@ class ClienteVehiculoController {
         return __awaiter(this, void 0, void 0, function* () {
             const id = req.params.id;
             try {
-                const query = yield database_1.default.query("SELECT * FROM cliente_vehiculo WHERE id_cliente_vehiculo =$1", [id]);
+                const query = yield database_1.default.query("SELECT * FROM vista_cliente_vehiculo WHERE id_cliente_vehiculo =$1", [id]);
                 res.json(query);
             }
             catch (error) {

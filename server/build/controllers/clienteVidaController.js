@@ -20,10 +20,10 @@ class ClienteVidaController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id_cliente, id_plan_vida } = req.body;
             try {
-                const queryText = "INSERT INTO cliente_vida ( id_cliente ,id_plan_vida ) VALUES ($1, $2)";
+                const queryText = "INSERT INTO cliente_vida ( id_cliente ,id_plan_vida ) VALUES ($1, $2)  RETURNING *";
                 const queryParams = [id_cliente, id_plan_vida];
                 const result = yield database_1.default.query(queryText, queryParams);
-                res.json({ text: "Cliente_Vida guardado" });
+                res.json(result);
             }
             catch (error) {
                 console.error("Error al crear Cliente_Vida:", error);
@@ -35,7 +35,7 @@ class ClienteVidaController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const clientevida = yield database_1.default.query("SELECT * FROM cliente_vida");
+                const clientevida = yield database_1.default.query("SELECT * FROM vista_cliente_vida");
                 res.json(clientevida);
             }
             catch (error) {
@@ -49,7 +49,7 @@ class ClienteVidaController {
         return __awaiter(this, void 0, void 0, function* () {
             const id = req.params.id;
             try {
-                const query = yield database_1.default.query("SELECT * FROM cliente_vida WHERE id_cliente_vida =$1", [id]);
+                const query = yield database_1.default.query("SELECT * FROM vista_cliente_vida WHERE id_cliente_vida =$1", [id]);
                 res.json(query);
             }
             catch (error) {

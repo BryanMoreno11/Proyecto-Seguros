@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AnioService {
   
-  API_URL= 'http://localhost:3000/api/';
+  API_URL= 'https://backend-tutorial-rxz2.onrender.com/api/';
 
   constructor(private http:HttpClient) { }
 
@@ -30,7 +30,7 @@ export class AnioService {
     return this.http.post(`${this.API_URL}anio`,anio);
   }
   //Update
-  updateAnio(id:string, anio:Anio){
+  updateAnio(id:string|number, anio:Anio){
     return this.http.put(`${this.API_URL}anio/${id}`,anio);
   }
   
