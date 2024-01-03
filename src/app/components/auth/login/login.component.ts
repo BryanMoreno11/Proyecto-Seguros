@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { UserCredential } from '@angular/fire/auth'; // Asegúrate de importar UserCredential desde tu paquete de Firebase
 
 @Component({
   selector: 'app-login',
@@ -18,15 +19,24 @@ export class LoginComponent {
       window.alert('Ingrese correctamente los datos');
     } else {
       const userData = { email: this.username, password: this.password };
+
+      // Verifica si el usuario está bloqueado antes de intentar iniciar sesión
+      if (this.userService.isUserBlocked(userData.email)) {
+        window.alert('Usuario bloqueado. Por favor, contacte al soporte.');
+        return;
+      }
+
       this.userService.login(userData)
-        .then((userCredential) => {
-          console.log(userCredential);
-          this.router.navigate(['/admin/admin-dashboard']);
-        })
-        .catch((error) => {
-          window.alert('Credenciales Erroneas');
-          console.log(error);
-        });
+        .subscribe(
+          (userCredential: UserCredential) => {
+            console.log(userCredential);
+            this.router.navigate(['/admin/admin-dashboard']);
+          },
+          (error: any) => {
+            window.alert('Credenciales Erróneas');
+            console.log(error);
+          }
+        );
     }
   }
 }

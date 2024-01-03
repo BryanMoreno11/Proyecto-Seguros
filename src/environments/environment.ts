@@ -1,10 +1,10 @@
 export const environment = {
   firebase: {
-    projectId: 'facilitaseguros-auth-e9db2',
-    appId: '1:58678882955:web:dbe58d05e5ae9a24fada8e',
-    storageBucket: 'facilitaseguros-auth-e9db2.appspot.com',
-    apiKey: 'AIzaSyA9GSWizgqO9au0yihRI7i028VP0zJTRH8',
-    authDomain: 'facilitaseguros-auth-e9db2.firebaseapp.com',
-    messagingSenderId: '58678882955',
+    apiKey: "AIzaSyAxkphPXOSmsSjQSbvzYTwlCigAXWZSuT0",
+  authDomain: "facilitaseguros-auth.firebaseapp.com",
+  projectId: "facilitaseguros-auth",
+  storageBucket: "facilitaseguros-auth.appspot.com",
+  messagingSenderId: "816226984132",
+  appId: "1:816226984132:web:a66173a119a51883866991"
   },
 };
