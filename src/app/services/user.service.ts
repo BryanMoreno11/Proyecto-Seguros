@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Auth, signInWithEmailAndPassword, signOut, User } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -47,16 +48,30 @@ export class UserService {
   }
 
   private handleFailedAttempt(email: string): void {
-    const intentosFallidos = parseInt(localStorage.getItem('intentosFallidos_' + email) || '0', 10) + 1;
-    
-    localStorage.setItem('intentosFallidos_' + email, intentosFallidos.toString());
-
-    if (intentosFallidos >= 3) {
-      // Puedes realizar alguna acción adicional, como bloquear el usuario en el servidor si es necesario.
-      // Aquí, simplemente mostramos un mensaje en la consola.
-      console.log('Usuario bloqueado');
-    }
+    signInWithEmailAndPassword(this.auth, email, 'fakePassword')
+      .then(() => {
+        // Si el intento de inicio de sesión fue exitoso, no actualices el contador de intentos fallidos
+      })
+      .catch((error) => {
+        if (error.code === 'auth/invalid-email') {
+          // Si el error es específicamente debido a un "correo electrónico no válido",
+          // no actualices el contador de intentos fallidos, ya que el usuario no existe.
+          console.log('Correo electrónico no válido. No se actualizó el contador de intentos fallidos.');
+        } else {
+          // Si el intento de inicio de sesión fue fallido por otra razón, actualiza el contador de intentos fallidos
+          const intentosFallidos = parseInt(localStorage.getItem('intentosFallidos_' + email) || '0', 10) + 1;
+          
+          localStorage.setItem('intentosFallidos_' + email, intentosFallidos.toString());
+  
+          if (intentosFallidos >= 3) {
+            // Puedes realizar alguna acción adicional, como bloquear el usuario en el servidor si es necesario.
+            // Aquí, simplemente mostramos un mensaje en la consola.
+            console.log('Usuario bloqueado');
+          }
+        }
+      });
   }
+  
 
   isUserBlocked(email: string): boolean {
     const intentosFallidos = parseInt(localStorage.getItem('intentosFallidos_' + email) || '0', 10);
