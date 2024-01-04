@@ -43,6 +43,8 @@ import { ClientePipe } from './pipes/cliente.pipe';
 import { ModeloPipe } from './pipes/modelo.pipe';
 import { AseguradoraVehiculoPipe } from './pipes/aseguradora-vehiculo.pipe';
 import { AseguradoraVidaPipe } from './pipes/aseguradora-vida.pipe';
+import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
+
 
 
 
@@ -83,7 +85,9 @@ import { AseguradoraVidaPipe } from './pipes/aseguradora-vida.pipe';
     ClientePipe,
     ModeloPipe,
     AseguradoraVehiculoPipe,
-    AseguradoraVidaPipe
+    AseguradoraVidaPipe,
+    AdminUsersComponent,
+
    
   
   ],

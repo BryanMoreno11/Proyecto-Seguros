@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../services/user.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-controlador',
@@ -18,7 +19,27 @@ export class ControladorComponent implements OnInit {
   }
 
   onClick() {
-    this.router.navigate(['/login']);
-    this.userService.logout();
+    Swal.fire({
+      title: "¿Está seguro?",
+      text: "Al confirmar se cerrará la sesión de administrador.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "Cancelar",
+      confirmButtonText: "Confirmar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "¡Alerta!",
+          text: "Se ha cerrado la sesión de administrador",
+          icon: "success"
+          
+        });
+        this.router.navigate(['/login']);
+        this.userService.logout();
+      }
+    });
+    
   }
 }
