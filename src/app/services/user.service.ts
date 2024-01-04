@@ -2,20 +2,17 @@ import { Injectable } from '@angular/core';
 import { Auth, signInWithEmailAndPassword, signOut, User } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  user: User | null = null; // Variable para almacenar la información del usuario
+  user: User | null = null;
 
   constructor(private auth: Auth) {
-    // Suscríbete al cambio de estado de autenticación para obtener el usuario actual
     this.auth.onAuthStateChanged((user) => {
       this.user = user;
     });
   }
-
   login({ email, password }: any): Observable<any> {
     return new Observable(observer => {
       const intentosFallidos = parseInt(localStorage.getItem('intentosFallidos_' + email) || '0', 10);
@@ -27,14 +24,21 @@ export class UserService {
 
       signInWithEmailAndPassword(this.auth, email, password)
         .then(response => {
-          // Éxito en la autenticación
-          localStorage.removeItem('intentosFallidos_' + email); // Restablecer intentos fallidos
+          localStorage.removeItem('intentosFallidos_' + email);
           observer.next(response);
         })
-        .catch(error => {
-          // Manejo de intentos fallidos
-          this.handleFailedAttempt(email);
-          observer.error(error);
+        .catch((error) => {
+          if (error.code === 'auth/invalid-email') {
+            console.log('Correo electrónico o credenciales no válidos. No se actualizó el contador de intentos fallidos.');
+            observer.error('Correo electrónico o credenciales no válidos. No se actualizó el contador de intentos fallidos.');
+          } else if (error.code === 'auth/user-not-found') {
+            console.log('Usuario no encontrado. No se actualizó el contador de intentos fallidos.');
+            observer.error('Usuario no encontrado. No se actualizó el contador de intentos fallidos.');
+          } else {
+            this.handleFailedAttempt(email);
+            console.error('Credenciales Erróneas:', error);
+            observer.error('Credenciales Erróneas');
+          }
         });
     });
   }
@@ -44,37 +48,62 @@ export class UserService {
   }
 
   getCurrentUserEmail() {
-    return this.user ? this.user.email : null; // Retorna el correo del usuario o null si no está autenticado
+    return this.user ? this.user.email : null;
   }
 
   private handleFailedAttempt(email: string): void {
-    signInWithEmailAndPassword(this.auth, email, 'fakePassword')
-      .then(() => {
-        // Si el intento de inicio de sesión fue exitoso, no actualices el contador de intentos fallidos
-      })
-      .catch((error) => {
-        if (error.code === 'auth/invalid-email') {
-          // Si el error es específicamente debido a un "correo electrónico no válido",
-          // no actualices el contador de intentos fallidos, ya que el usuario no existe.
-          console.log('Correo electrónico no válido. No se actualizó el contador de intentos fallidos.');
-        } else {
-          // Si el intento de inicio de sesión fue fallido por otra razón, actualiza el contador de intentos fallidos
-          const intentosFallidos = parseInt(localStorage.getItem('intentosFallidos_' + email) || '0', 10) + 1;
-          
-          localStorage.setItem('intentosFallidos_' + email, intentosFallidos.toString());
-  
-          if (intentosFallidos >= 3) {
-            // Puedes realizar alguna acción adicional, como bloquear el usuario en el servidor si es necesario.
-            // Aquí, simplemente mostramos un mensaje en la consola.
-            console.log('Usuario bloqueado');
-          }
-        }
-      });
+    if (!this.isUserBlocked(email)) {
+      const intentosFallidos = parseInt(localStorage.getItem('intentosFallidos_' + email) || '0', 10) + 1;
+      localStorage.setItem('intentosFallidos_' + email, intentosFallidos.toString());
+
+      if (intentosFallidos >= 3) {
+        signInWithEmailAndPassword(this.auth, email, 'fakePassword')
+          .then(() => {})
+          .catch((error) => {
+            if (error.code === 'auth/invalid-email') {
+              console.log('Correo electrónico o credenciales no válidos. No se actualizó el contador de intentos fallidos.');
+            } else {
+              localStorage.setItem('intentosFallidos_' + email, intentosFallidos.toString());
+
+              if (intentosFallidos >= 3) {
+                console.log('Usuario bloqueado localmente');
+              }
+            }
+          });
+      }
+    }
   }
-  
 
   isUserBlocked(email: string): boolean {
     const intentosFallidos = parseInt(localStorage.getItem('intentosFallidos_' + email) || '0', 10);
     return intentosFallidos >= 3;
   }
+
+  
+// ... (otras funciones)
+
+getBlockedUsers(): string[] {
+  const blockedUsers: string[] = [];
+
+  // Iterar sobre el almacenamiento local y obtener usuarios bloqueados
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key && key.startsWith('intentosFallidos_')) {
+      const email = key.substring('intentosFallidos_'.length);
+      if (this.isUserBlocked(email)) {
+        blockedUsers.push(email);
+      }
+    }
+  }
+
+  return blockedUsers;
 }
+
+unblockUser(email: string): void {
+  // Desbloquear al usuario localmente
+  localStorage.removeItem('intentosFallidos_' + email);
+}
+
+
+}
+

@@ -29,6 +29,7 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
 import { ControladorComponent } from './components/admin/controlador/controlador.component';
 import { BaseComponent } from './components/admin/base/base.component';
 import {canActivate, redirectUnauthorizedTo, redirectLoggedInTo} from '@angular/fire/auth-guard';
+import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
 
 const routes: Routes = [
   {path:'personas', component: PersonasComponent},
@@ -69,6 +70,7 @@ const routes: Routes = [
   {path:'controlador',component:ControladorComponent, ...canActivate(() => redirectUnauthorizedTo(['/personas']))},
  
   {path:'admin',component:BaseComponent, ...canActivate(() => redirectUnauthorizedTo(['/personas'])), children:[
+    {path:'admin-users',component:AdminUsersComponent, ...canActivate(() => redirectUnauthorizedTo(['/personas']))},
     {path:'admin-aseguradora-vehiculo',component:AdminAseguradoraVehiculoComponent, ...canActivate(() => redirectUnauthorizedTo(['/personas']))},
     {path:'admin-edit-aseguradora-vehiculo/:id',component:AdminEditAseguradoraVehiculoComponent, ...canActivate(() => redirectUnauthorizedTo(['/personas']))},
     {path:'admin-add-aseguradora-vehiculo',component:AdminEditAseguradoraVehiculoComponent, ...canActivate(() => redirectUnauthorizedTo(['/personas']))},

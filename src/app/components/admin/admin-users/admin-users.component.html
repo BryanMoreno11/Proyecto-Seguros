@@ -1,1 +1,21 @@
-<p>admin-users works!</p>
+<!-- admin-users.component.html -->
+<h1 class="heading">Usuarios Bloqueados</h1>
+
+<div class="table-container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Correo Electrónico</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let blockedUser of blockedUsers">
+                <td>{{ blockedUser }}</td>
+                <td>
+                    <button (click)="unblockUser(blockedUser)">Desbloquear</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
