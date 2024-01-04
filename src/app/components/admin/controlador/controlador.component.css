@@ -1,263 +1,145 @@
-/* Estilo para la barra lateral */
+/* CSS */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+}
 
 .sidebar {
-    width: 250px;
-    background-color: #333;
-    color: #fff;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-    transition: width 0.3s ease-in-out;
-    /* Agregamos una transición suave para el ancho */
+  position: fixed;
+  left: -250px;
+  width: 250px;
+  height: calc(100% - 220px);
+  background: #042331;
+  transition: all .5s ease;
+  overflow-y: auto;
 }
 
-
-/* Estilo para el encabezado de la barra lateral */
-
-.sidebar-header {
-    padding: 20px;
-    text-align: center;
-}
-
-
-/* Estilo para la lista de enlaces en la barra lateral */
-
-.sidebar li {
-    text-decoration: none;
-    color: #5c96e2;
-    display: block;
-    text-align: center;
-    /* Alinea el texto al centro */
-    margin-bottom: 10px;
-    /* Agrega un espacio entre los elementos */
-}
-
-.sidebar button {
-    color: #fff;
-    font-size: 16px;
-    padding: 12px 35px;
-    border-radius: 50px;
-    display: block;
-    margin: 0 auto;
-    /* Centra el botón horizontalmente */
-    background-image: linear-gradient(135deg, #001aff 10%, #001aff 100%);
-    border: 0;
-    outline: 0;
-    cursor: pointer;
-}
-
-
-/* Estilo para el botón de cerrar sesión al pasar el cursor */
-
-.sidebar button:hover {
-    background-image: linear-gradient(135deg, #0000ff 10%, #0000ff 100%);
+.sidebar header {
+  font-size: 22px;
+  color: white;
+  line-height: 70px;
+  text-align: center;
+  background: #063146;
+  user-select: none;
 }
 
 .sidebar ul {
-    list-style: none;
-    padding: 0;
+  margin-bottom: 50px; /* Añade un margen inferior para crear espacio para el fondo */
 }
 
 .sidebar ul li {
-    padding: 10px;
-    transition: background-color 0.3s ease;
-    /* Efecto de cambio de color al pasar el cursor */
+  position: relative;
 }
 
-.sidebar ul li:hover {
-    background-color: #555;
-    /* Color de fondo cuando se pasa el cursor */
+.sidebar ul a {
+  display: block;
+  height: 50px;
+  width: 100%;
+  line-height: 50px;
+  font-size: 20px;
+  color: white;
+  padding-left: 40px;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, .1);
+  transition: .4s;
 }
 
-.sidebar ul li a {
-    text-decoration: none;
-    color: #fff;
-    display: block;
+ul li:hover a {
+  padding-left: 50px;
 }
 
-
-/* Estilo para la barra lateral */
-
-.sidebar {
-    width: 250px;
-    background-color: #333;
-    color: #fff;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-    transition: width 0.3s ease-in-out;
-    /* Agregamos una transición suave para el ancho */
+.sidebar ul li:last-child a {
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
 
-
-/* Estilo para el encabezado de la barra lateral */
-
-.sidebar-header {
-    padding: 20px;
-    text-align: center;
+.sidebar ul a i {
+  margin-right: 16px;
 }
 
-
-/* Estilo para la lista de enlaces en la barra lateral */
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
+.sidebar footer {
+  position: fixed;
+  bottom: 0;
+  width: 250px;
+  text-align: center;
+  padding: 10px;
+  background: #042331;
+  border-top: 1px solid rgba(255, 255, 255, .1);
 }
 
-.sidebar ul li {
-    padding: 10px;
-    transition: background-color 0.3s ease;
-    /* Efecto de cambio de color al pasar el cursor */
+#menu-toggle {
+  display: none;
 }
 
-.sidebar ul li:hover {
-    background-color: #555;
-    /* Color de fondo cuando se pasa el cursor */
+label #menu-btn,
+label #menu-cancel {
+  position: fixed;
+  background: #042331;
+  border-radius: 3px;
+  cursor: pointer;
+  z-index: 1111;
 }
 
-.sidebar ul li a {
-    text-decoration: none;
-    color: #fff;
-    display: block;
+label #menu-btn {
+  left: 1%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 35px;
+  color: white;
+  padding: 6px 12px;
 }
 
-
-/* Estilo para el contenido principal */
-
-.content {
-    margin-left: 250px;
-    /* Ancho de la barra lateral */
-    padding: 20px;
-    transition: margin-left 0.3s ease-in-out;
-    /* Agregamos una transición suave para el margen izquierdo */
+label #menu-btn:hover {
+  transform: translate(-50%, -50%) scale(1.2);
 }
 
-
-/* Estilo para el encabezado del contenido principal */
-
-.content-header {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
+label #menu-cancel {
+  display: none;
+  position: fixed;
+  left: 1%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  color: #0a5275;
+  padding: 4px 9px;
+  z-index: 1111;
 }
 
-
-/* Estilo para el botón de abrir/cerrar la barra lateral */
-
-.sidebar-toggle-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    cursor: pointer;
-    z-index: 2;
+#menu-toggle:checked~.sidebar #menu-cancel {
+  display: block;
+  left: 1%;
 }
 
-
-/* Cambiamos el color del botón de abrir/cerrar la barra lateral */
-
-.sidebar-toggle-button:hover {
-    color: #fff;
+#menu-toggle:checked~label #menu-cancel {
+  display: block;
 }
 
-
-/* Cambiamos el color del icono del botón de abrir/cerrar la barra lateral */
-
-.sidebar-toggle-button i {
-    color: #fff;
+#menu-toggle:checked~.sidebar {
+  left: 0;
 }
 
-
-/* Agregamos un efecto de sombra a la barra lateral */
-
-
-/* Media Query para pantallas más pequeñas */
-
-.admin-icon {
-    text-align: center;
-    padding: 20px;
-    /* Ajusta el espaciado según tus preferencias */
+#menu-toggle:checked~label #menu-btn {
+  left: 250px;
+  opacity: 0;
+  pointer-events: none;
 }
 
-.admin-icon img {
-    max-width: 100%;
-    /* Asegura que la imagen se ajuste al contenedor */
-    height: auto;
-    /* Mantiene la proporción de aspecto */
+#menu-toggle:checked~section {
+  margin-left: 250px;
 }
 
-
-/* Estilo para el contenido principal */
-
-.content {
-    margin-left: 250px;
-    /* Ancho de la barra lateral */
-    padding: 20px;
-    transition: margin-left 0.3s ease-in-out;
-    /* Agregamos una transición suave para el margen izquierdo */
-}
-
-
-/* Estilo para el encabezado del contenido principal */
-
-.content-header {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-
-/* Estilo para el botón de abrir/cerrar la barra lateral */
-
-.sidebar-toggle-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    cursor: pointer;
-    z-index: 2;
-}
-
-
-/* Cambiamos el color del botón de abrir/cerrar la barra lateral */
-
-.sidebar-toggle-button:hover {
-    color: #fff;
-}
-
-
-/* Cambiamos el color del icono del botón de abrir/cerrar la barra lateral */
-
-.sidebar-toggle-button i {
-    color: #fff;
-}
-
-
-/* Agregamos un efecto de sombra a la barra lateral */
-
-
-/* Media Query para pantallas más pequeñas */
-
-
-/* Media Query para pantallas más pequeñas */
-
-@media screen and (max-width: 768px) {
-    .sidebar {
-        width: 0;
-    }
-    .content {
-        margin-left: 0;
-    }
-}
-
-.admin-icon {
-    text-align: center;
-    padding: 20px;
-    /* Ajusta el espaciado según tus preferencias */
-}
-
-.admin-icon img {
-    max-width: 100%;
-    /* Asegura que la imagen se ajuste al contenedor */
-    height: auto;
-    /* Mantiene la proporción de aspecto */
+section {
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  overflow-y: auto;
+  transition: all .5s;
 }
