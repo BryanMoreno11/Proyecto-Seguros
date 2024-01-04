@@ -1,43 +1,57 @@
 <div class="container">
-    <div class="row">
-
-        <div class="col-md-6">
-            <canvas id="seguroVehiculoProvincia" width="200" height="200"></canvas>
+    <div>
+        <h1>Valoración del producto de software</h1>
+        <div>
+            <canvas id="valoraciones" width="200" height="200"></canvas>
         </div>
+    </div>
+    <div>
+        <h1>Solicitudes de seguros por Provincia</h1>
+        <div class="graficos">
+            <div class="grafico1">
+                <canvas id="seguroVehiculoProvincia" width="50" height="300"></canvas>
+            </div>
+            <div class="grafico2">
+                <canvas id="seguroVidaProvincia" width="50" height="300"></canvas>
+            </div>
+        </div>
+    </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <canvas id="seguroVidaProvincia" width="200" height="200"></canvas>
+    <div>
+        <h1>Solicitudes de seguros por Ciudad</h1>
+        <div class="graficos">
+            <div class="grafico1">
+                <canvas id="seguroVehiculoCiudad" width="200" height="300"></canvas>
             </div>
 
-            <div class="col-md-6">
-                <canvas id="seguroVehiculoCiudad" width="200" height="500"></canvas>
+            <div class="grafico2">
+                <canvas id="seguroVidaCiudad" width="200" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h1>Porcentaje de Seguros Solicitados por Cada Aseguradora</h1>
+        <div class="graficos">
+            <div class="grafico1">
+                <canvas id="seguroVehiculoPorcentaje" width="200" height="400"></canvas>
+            </div>
+            <div class="grafico2">
+                <canvas id="seguroVidaPorcentaje" width="200" height="400"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h1>Usuarios que solicitaron un seguro en la última semana</h1>
+        <div class="graficos">
+            <div class="grafico1">
+                <canvas id="clientesSemanaVehiculo" width="200" height="200"></canvas>
             </div>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <canvas id="seguroVidaCiudad" width="200" height="500"></canvas>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <canvas id="seguroVehiculoPorcentaje" width="200" height="400"></canvas>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <canvas id="seguroVidaPorcentaje" width="200" height="400"></canvas>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <canvas id="clientesSemanaVehiculo" width="200" height="200"></canvas>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <canvas id="clientesSemanaVida" width="200" height="200"></canvas>
-                                </div>
-
-
-                            </div>
-                        </div>
+            <div class="grafico2">
+                <canvas id="clientesSemanaVida" width="200" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+</div>

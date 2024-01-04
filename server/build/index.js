@@ -42,6 +42,7 @@ const cliente_1 = __importDefault(require("./routes/cliente"));
 const clienteVehiculo_1 = __importDefault(require("./routes/clienteVehiculo"));
 const cliente_Vida_1 = __importDefault(require("./routes/cliente_Vida"));
 const correoRoutes_1 = __importDefault(require("./routes/correoRoutes"));
+const valoracion_1 = __importDefault(require("./routes/valoracion"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -72,6 +73,7 @@ class Server {
         this.app.use('/api/clienteVehiculo', clienteVehiculo_1.default);
         this.app.use('/api/clientevida', cliente_Vida_1.default);
         this.app.use('/api/envio', correoRoutes_1.default);
+        this.app.use('/api/valoracion', valoracion_1.default);
     }
 }
 const server = new Server();

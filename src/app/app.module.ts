@@ -43,7 +43,7 @@ import { ClientePipe } from './pipes/cliente.pipe';
 import { ModeloPipe } from './pipes/modelo.pipe';
 import { AseguradoraVehiculoPipe } from './pipes/aseguradora-vehiculo.pipe';
 import { AseguradoraVidaPipe } from './pipes/aseguradora-vida.pipe';
-
+import { NgxStarsModule } from 'ngx-stars';
 
 
 @NgModule({
@@ -93,7 +93,8 @@ import { AseguradoraVidaPipe } from './pipes/aseguradora-vida.pipe';
     FormsModule,
     HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth())
+    provideAuth(() => getAuth()),
+    NgxStarsModule
     
   ],
   providers: [AutomovilesService],

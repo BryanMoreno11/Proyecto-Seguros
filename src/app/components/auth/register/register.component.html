@@ -52,4 +52,14 @@
         </div>
     </form>
 </div>
+<div class="modal" id="modal">
+    <div class="modal-contenido">
+        <p class="experiencia">¡Gracias por cotizar tu seguro con nosotros!<br>¿Cómo calificarías tu experiencia?</p>
+        <div (click)="cerrarModal()" class="cerrar-container">
+            <span class="cerrar">&times;</span>
+        </div>
+        <ngx-stars class="estrellas" [readonly]="false" [size]="2" [color]="'#fff220'" (ratingOutput)="setRating($event)"></ngx-stars>
+        <button (click)="guardarValoracion()" class="boton-container">Enviar</button>
+    </div>
+</div>
 <app-footer></app-footer>
