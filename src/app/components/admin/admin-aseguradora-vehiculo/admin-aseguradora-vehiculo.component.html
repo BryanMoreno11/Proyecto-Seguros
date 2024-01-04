@@ -15,8 +15,6 @@
                 <th>Nombre</th>
                 <th>Correo</th>
                 <th>Teléfono</th>
-                <th>Descripción</th>
-                <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -25,10 +23,8 @@
                 <td>{{ aseguradorasauto.nombre }}</td>
                 <td>{{ aseguradorasauto.correo }}</td>
                 <td>{{ aseguradorasauto.telefono }}</td>
-                <td [innerHTML]="reemplazarSaltosDeLinea(aseguradorasauto.descripcion)"></td>
-                <td>
-                    <img [src]="aseguradorasauto.imagen" alt="" class="card-img">
-                </td>
+                
+                
                 <td>
                     <div class="action-icons">
                         <a class="img-link" [routerLink]="['/admin/admin-edit-aseguradora-vehiculo', aseguradorasauto.id_aseguradora_vehiculo]">

@@ -125,7 +125,7 @@ h1 {
     padding: 8px;
     border: 1px solid #0056b3;
     /* Color del borde */
-    background-color: #c5e2f9;
+    background-color: #ffffff;
     /* Color de fondo */
     color: #0056b3;
     /* Color del texto */
@@ -156,4 +156,53 @@ h1 {
 .search-container {
     text-align: center;
     /* Centra los elementos horizontalmente */
+}
+
+.container {
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.table-container {
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+    .table thead tr th,
+    .table tbody tr td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .heading {
+        font-size: 30px;
+    }
+
+    .btn-insert {
+        font-size: 18px;
+    }
+
+    .select-container select,
+    .search-container input[type="text"] {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .table tbody tr td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .table tbody tr td:nth-child(4) {
+        /* Ajusta el orden según tus necesidades */
+        order: 1;
+    }
 }

@@ -114,77 +114,95 @@ h1 {
 }
 
 
-/* Estilos para las imágenes en la tabla */
+/* Estilos para centrar los select y el campo de búsqueda */
 
-.table tbody tr td img.card-img {
-    max-width: 100px;
-    /* Ajusta el tamaño máximo de las imágenes */
-    height: auto;
-    display: block;
+
+/* Estilos para centrar y ajustar el ancho de los select y el campo de búsqueda */
+
+.select-container select,
+.search-container input[type="text"] {
+    font-size: 20px;
+    padding: 8px;
+    border: 1px solid #0056b3;
+    /* Color del borde */
+    background-color: #ffffff;
+    /* Color de fondo */
+    color: #0056b3;
+    /* Color del texto */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    outline: none;
+    /* Elimina el borde de enfoque */
     margin: 0 auto;
+    /* Centra horizontalmente los elementos */
+    display: block;
+    width: 80%;
+    /* Ajusta el ancho al 80% (puedes cambiar este valor según tus preferencias) */
 }
 
-.action-icons {
+
+/* Estilos para los select y el campo de búsqueda cuando se enfocan */
+
+.select-container select:focus,
+.search-container input[type="text"]:focus {
+    border-color: #007bff;
+    /* Cambia el color del borde cuando se enfoca */
+}
+
+
+/* Estilos para el contenedor de los select y el campo de búsqueda */
+
+.select-container,
+.search-container {
+    text-align: center;
+    /* Centra los elementos horizontalmente */
+}
+
+.container {
+    width: 100%;
+    overflow-x: auto;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
 }
 
-.action-icons .img-link {
-    margin-right: 2px;
-    /* Espacio entre los íconos */
-}
-
-
-/* Estilos para el campo de búsqueda */
-
-input[type="text"] {
+.table-container {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
+    box-sizing: border-box;
+    overflow-x: auto;
 }
 
+@media (max-width: 768px) {
+    .table thead tr th,
+    .table tbody tr td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
 
-/* Estilos para el placeholder del campo de búsqueda */
+    .heading {
+        font-size: 30px;
+    }
 
-input[type="text"]::placeholder {
-    color: #999;
+    .btn-insert {
+        font-size: 18px;
+    }
+
+    .select-container select,
+    .search-container input[type="text"] {
+        font-size: 16px;
+    }
 }
 
+@media (max-width: 768px) {
+    .table tbody tr td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
 
-/* Estilos adicionales para el campo de búsqueda cuando se enfoca */
-
-input[type="text"]:focus {
-    border-color: #007bff;
-    /* Cambia el color del borde cuando se enfoca */
-}
-
-
-/* Estilos para el campo de búsqueda */
-
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-}
-
-
-/* Estilos para el placeholder del campo de búsqueda */
-
-input[type="text"]::placeholder {
-    color: #999;
-}
-
-
-/* Estilos adicionales para el campo de búsqueda cuando se enfoca */
-
-input[type="text"]:focus {
-    border-color: #007bff;
-    /* Cambia el color del borde cuando se enfoca */
+    .table tbody tr td:nth-child(4) {
+        /* Ajusta el orden según tus necesidades */
+        order: 1;
+    }
 }
