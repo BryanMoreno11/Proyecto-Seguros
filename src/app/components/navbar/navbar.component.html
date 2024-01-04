@@ -1,35 +1,20 @@
-<nav class="navbar">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<nav>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+    </label>
+
     <div class="logo">
-        <img class="logo-image" src="../../../assets/logo-seguro.png" alt="">
-        <a class="logo-name" aria-current="page" [routerLink]="['personas']" routerLinkActive="active">
-            <h1>FacilitaSeguros</h1>
-        </a>
-
-
+        <img class="logo-image" src="../../../assets/logo-seguro.png" alt="NOSE">
+        <label>FACILITA SEGUROS</label>
     </div>
-    <ul class="group-list">
-        <li class="list-item">
-            <a [routerLink]="['personas']" routerLinkActive="active">
-          Inicio
-        </a>
-        </li>
+    <ul>
+        <li><a [routerLink]="['personas']" routerLinkActive="active" (click)="closeMenu(); navigateTo('/personas')">Inicio</a></li>
+        <li><a [routerLink]="['planes-automoviles']" routerLinkActive="active" (click)="closeMenu(); navigateTo('/planes-automoviles')">Planes Automoviles</a></li>
+        <li><a [routerLink]="['planes-personas']" routerLinkActive="active" (click)="closeMenu(); navigateTo('/planes-personas')">Planes de Vida</a></li>
+        <li><a [routerLink]="['quienes-somos']" routerLinkActive="active" (click)="closeMenu(); navigateTo('/quienes-somos')">Quienes Somos</a></li>
 
-        <li class="list-item">
-            <a [routerLink]="['quienes-somos']" routerLinkActive="active">
-          Quienes somos
-        </a>
-        </li>
-        <li class="list-item">
-            <a [routerLink]="['quienes-somos']" routerLinkActive="active">
-          RuntimerszzzXDDDDDDDDDDDDDDDDDD
-        </a>
-        </li>
-        <li class="list-item">
-            <a class="servicios">Planes</a>
-            <ul class="submenu">
-                <li><a [routerLink]="['planes-personas']" routerLinkActive="active">Personas</a></li>
-                <li><a [routerLink]="['planes-automoviles']" routerLinkActive="active">Automoviles</a></li>
-            </ul>
-        </li>
     </ul>
 </nav>
+<div></div>

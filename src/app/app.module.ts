@@ -43,7 +43,7 @@ import { ClientePipe } from './pipes/cliente.pipe';
 import { ModeloPipe } from './pipes/modelo.pipe';
 import { AseguradoraVehiculoPipe } from './pipes/aseguradora-vehiculo.pipe';
 import { AseguradoraVidaPipe } from './pipes/aseguradora-vida.pipe';
-import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
+import { NgxStarsModule } from 'ngx-stars';import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
 
 
 
@@ -97,7 +97,8 @@ import { AdminUsersComponent } from './components/admin/admin-users/admin-users.
     FormsModule,
     HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth())
+    provideAuth(() => getAuth()),
+    NgxStarsModule
     
   ],
   providers: [AutomovilesService],

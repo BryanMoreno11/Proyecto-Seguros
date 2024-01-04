@@ -7,13 +7,23 @@ import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AseguradoraVehiculoService, Aseguradora_vehiculos } from 'src/app/services/aseguradora-vehiculo.service';
 import Swal from 'sweetalert2';
+import { Valoracion, ValoracionService } from 'src/app/services/valoracion.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  id_cliente:number=0;
   //objetos
+  valoracion:Valoracion={
+    id_valoracion:0,
+    id_cliente:0,
+    valoracion:0
+  }
+
+
+
   cliente:Cliente = {
   id_cliente:0,
   cedula:"",
@@ -109,7 +119,8 @@ export class RegisterComponent implements OnInit {
   ciudadesProvincia: string[] = [];
 
   constructor(private cliente_service:ClienteService, private activatedRoute:ActivatedRoute, private cliente_vehiculo_service:ClienteVehiculoService,
-    private cliente_vida_service:ClienteVidaService, private router:Router,private httpclien:HttpClient, private aseguradora_service:AseguradoraVehiculoService ){
+    private cliente_vida_service:ClienteVidaService, private router:Router,private httpclien:HttpClient, private aseguradora_service:AseguradoraVehiculoService,
+    private valoracion_service:ValoracionService ){
   }
 
   ngOnInit():void{
@@ -123,6 +134,7 @@ export class RegisterComponent implements OnInit {
     if((this.cliente_vehiculo_service.estado || this.cliente_vida_service.estado) && forma.valid && this.calcularEdad()>=18 ){
       
       let id_cliente= this.clienteRepetido();
+      this.id_cliente= id_cliente;
       if(id_cliente!=-1 && this.cliente_vehiculo_service.estado ){
         this.clienteVehiculo.id_cliente = id_cliente;
         this.cliente_service.updateCliente(id_cliente, this.cliente).subscribe(
@@ -141,6 +153,7 @@ export class RegisterComponent implements OnInit {
           (res:Cliente) => {
             this.client=res;
             this.client=this.client[0];
+            this.id_cliente=this.client.id_cliente;
             if (this.cliente_vehiculo_service.estado) {
               this.clienteVehiculo.id_cliente = this.client.id_cliente;
               this.correoClienteVehiculo();
@@ -259,7 +272,7 @@ export class RegisterComponent implements OnInit {
   })
         console.log(this.client_seguro);
         this.cliente_vehiculo_service.estado=false;
-        this.router.navigate(['/home']);
+        this.abrirModal();
       }
        ,err=>{console.log(err);} )
      
@@ -295,16 +308,15 @@ export class RegisterComponent implements OnInit {
           text: 'Seguro registrado correctamente',
           icon: 'success',
           confirmButtonText: 'OK'
-        })
+        });
         this.httpclien.post('http://localhost:3000/api/envio/vida',params).subscribe(resp=>{
         console.log(resp);
        });
        this.httpclien.post('http://localhost:3000/api/envio/envioaseguradoravida',params).subscribe(resp=>{
         console.log(resp);
-       }) 
-        console.log(this.client_seguro);
+       })
         this.cliente_vida_service.estado=false;
-        this.router.navigate(['/home']);
+        this.abrirModal();      
       }
       , err=>{console.log(err);}
       )
@@ -326,4 +338,39 @@ export class RegisterComponent implements OnInit {
     return edad
   }
 
+  setRating(rating:number){
+    
+    this.valoracion.valoracion= rating;
+    console.log(this.valoracion.valoracion);
+  }
+
+  guardarValoracion(){
+    this.valoracion.id_cliente=this.id_cliente;
+    this.valoracion.valoracion*=2;
+    this.valoracion_service.insertValoracion(this.valoracion).subscribe(res=>
+      {console.log(res);
+        Swal.fire({
+          title:'Gracias por su calificación!',
+          text: '  Tu calificación nos ayudará a mejorar nuestros servicios',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+        this.router.navigate(['/home']);}
+
+      );
+  }
+  abrirModal() {
+    let ob= document.getElementById('modal');
+    if(ob){
+      ob.style.display="block";
+    }
+  }
+  
+  cerrarModal() {
+    let ob= document.getElementById('modal');
+    if(ob){
+      ob.style.display="none";
+    }
+    this.router.navigate(['/home']);
+}
 }

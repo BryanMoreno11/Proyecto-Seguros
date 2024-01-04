@@ -1,4 +1,23 @@
-.container {
-    width: 80%;
-    overflow-x: auto;
+.graficos {
+    display: flex;
+}
+
+.grafico1,
+.grafico2 {
+    width: 50%;
+    margin-right: 30px;
+}
+
+h1 {
+    text-align: center;
+}
+
+@media screen and (max-width:500px) {
+    .grafico1,
+    .grafico2 {
+        width: 100%;
+    }
+    .graficos {
+        display: initial;
+    }
 }

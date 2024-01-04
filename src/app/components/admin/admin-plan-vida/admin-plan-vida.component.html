@@ -18,8 +18,7 @@
         <thead>
             <tr>
                 <th>Aseguradora</th>
-                <th>Nombre del seguro</th>
-                <th>Descripcion</th>
+                <th>Nombre del seguro</th>     
                 <th>Precio</th>
                 <th>Acciones</th>
 
@@ -29,7 +28,6 @@
             <tr *ngFor="let planvida of planesVida | seguroVida:searchText;">
                 <td>{{planvida.aseguradora_nombre}}</td>
                 <td>{{planvida.plan_vida_nombre}}</td>
-                <td>{{planvida.plan_vida_descripcion}}</td>
                 <td>{{planvida.precio}}</td>
                 <td>
                     <a class="img-link" [routerLink]="['/admin/admin-edit-plan-vida',planvida.id_plan_vida]">
