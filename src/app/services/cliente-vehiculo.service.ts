@@ -8,7 +8,7 @@ export class ClienteVehiculoService {
   //variables
   estado:boolean=false;
 
-  API_URL= 'http://localhost:3000/api/';
+  API_URL= 'https://backend-tutorial-rxz2.onrender.com/api/';
 
   constructor(private http: HttpClient) { }
   //-------------------------Métodos---------------------------

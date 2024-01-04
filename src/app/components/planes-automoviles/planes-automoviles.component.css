@@ -21,7 +21,7 @@ section {
 }
 
 
-/* Estilos generales del recuadro */
+/* Estilos generales del recuadro de la pagina*/
 
 .recuadro {
     margin: auto;
@@ -123,41 +123,4 @@ section {
         width: 200px;
         height: auto;
     }
-}
-
-select {
-    width: 600px;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-select option {
-    padding: 8px;
-}
-
-select:focus {
-    outline: none;
-    border-color: #66afe9;
-    box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: blue;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-}
-
-button:hover {
-    background-color: #5377e4;
-}
-
-button:active {
-    background-color: #4160c6;
 }

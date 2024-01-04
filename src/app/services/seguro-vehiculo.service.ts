@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SeguroVehiculoService {
 
-  API_URL= 'http://localhost:3000/api/';
+  API_URL= 'https://backend-tutorial-rxz2.onrender.com/api/';
 
 
   constructor(private http:HttpClient) { }
