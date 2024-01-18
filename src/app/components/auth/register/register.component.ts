@@ -21,9 +21,6 @@ export class RegisterComponent implements OnInit {
     id_cliente:0,
     valoracion:0
   }
-
-
-
   cliente:Cliente = {
   id_cliente:0,
   cedula:"",
@@ -347,6 +344,7 @@ export class RegisterComponent implements OnInit {
   guardarValoracion(){
     this.valoracion.id_cliente=this.id_cliente;
     this.valoracion.valoracion*=2;
+    console.log(this.valoracion);
     this.valoracion_service.insertValoracion(this.valoracion).subscribe(res=>
       {console.log(res);
         Swal.fire({
@@ -359,6 +357,8 @@ export class RegisterComponent implements OnInit {
 
       );
   }
+
+
   abrirModal() {
     let ob= document.getElementById('modal');
     if(ob){
