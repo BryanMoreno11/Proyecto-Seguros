@@ -27,6 +27,7 @@
     "chartjs-plugin-datalabels": "^2.2.0",
     "moment": "^2.29.4",
     "ngx-stars": "^1.6.5",
+    "nodemailer": "^6.9.9",
     "promise-pg": "^0.1.1",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.7.31",
